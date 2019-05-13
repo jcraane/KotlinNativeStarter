@@ -7,6 +7,7 @@ plugins {
 
 val lifeCycleVersion = "2.1.0-alpha03"
 val coroutinesVersion = "1.1.1"
+val koinVersion = "1.0.2"
 
 android {
     compileSdkVersion(28)
@@ -40,6 +41,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+    implementation("org.koin:koin-android:$koinVersion")
+    implementation("org.koin:koin-androidx-viewmodel:$koinVersion")
     kapt("androidx.lifecycle:lifecycle-compiler:$lifeCycleVersion")
     testImplementation("junit:junit:4.12")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")

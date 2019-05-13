@@ -14,4 +14,15 @@
             android:layout_height="wrap_content"
             tools:text="MainActivity"/>
 
+    <TextView
+            android:id="@+id/persons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="MainActivity"/>
+
+    <TextView
+            android:id="@+id/errorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="MainActivity"/>
 </LinearLayout>
