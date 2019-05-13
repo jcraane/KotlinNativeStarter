@@ -9,4 +9,4 @@ pluginManagement {
 }
 rootProject.name = 'KotlinNativeStarter'
 
-include ':app'
+include ':common', ':android', ':android:app'
