@@ -3,6 +3,10 @@ package nl.jamiecraane.multiplatform.myapp.main.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.soywiz.klock.DateTime
+import com.soywiz.klock.KlockLocale
+import com.soywiz.klock.format
+import com.soywiz.klock.locale.dutch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -16,6 +20,7 @@ class MainViewModel : ViewModel() {
 
     val persons: MutableLiveData<List<Person>> = MutableLiveData()
     val errorText = MutableLiveData("")
+    val currentTime = MutableLiveData<String>()
 
     init {
         viewModelScope.launch {
@@ -30,6 +35,9 @@ class MainViewModel : ViewModel() {
                 is Failure -> errorText.value = "Error"
             }
         }
+
+        val now = DateTime.now()
+        currentTime.value = KlockLocale.dutch.formatDateShort.format(now)
     }
 }
 

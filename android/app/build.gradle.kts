@@ -25,6 +25,9 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    dataBinding {
+        isEnabled = true
+    }
     packagingOptions {
         exclude("META-INF/common.kotlin_module")
         exclude("META-INF/*.kotlin_module")
@@ -34,6 +37,7 @@ android {
 dependencies {
     implementation(project(":common"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation("com.soywiz:klock-locale-android:1.4.0")
     implementation("com.soywiz:klock-android:1.4.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.31")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
