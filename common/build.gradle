@@ -5,7 +5,7 @@ repositories {
     mavenCentral()
 }
 
-def ktor_version = "1.1.5"
+def ktor_version = "1.1.4"
 
 kotlin {
     jvm()
@@ -21,6 +21,7 @@ kotlin {
             dependencies {
                 implementation kotlin('stdlib-common')
                 implementation("io.ktor:ktor-client-core:$ktor_version")
+                implementation("io.ktor:ktor-client-logging:1.1.4")
             }
         }
         commonTest {
