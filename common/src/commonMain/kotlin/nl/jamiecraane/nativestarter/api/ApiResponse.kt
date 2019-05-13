@@ -1,4 +1,4 @@
-package nl.jamiecraane.native.api
+package nl.jamiecraane.nativestarter.api
 
 sealed class ApiResponse<out T>
 

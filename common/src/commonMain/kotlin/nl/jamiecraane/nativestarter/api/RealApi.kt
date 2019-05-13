@@ -1,4 +1,4 @@
-package nl.jamiecraane.native.api
+package nl.jamiecraane.nativestarter.api
 
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
@@ -10,7 +10,7 @@ import io.ktor.http.isSuccess
 import kotlinx.io.charsets.Charset
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
-import nl.jamiecraane.native.domain.Person
+import nl.jamiecraane.nativestarter.domain.Person
 
 class RealApi : Api {
     private val client = HttpClient() /* {
@@ -26,7 +26,12 @@ class RealApi : Api {
         }
 
         return if (response.status.isSuccess()) {
-            Success(Json.parse(Person.serializer().list, response.readText(Charset.forName("UTF-8"))))
+            Success(
+                Json.parse(
+                    Person.serializer().list,
+                    response.readText(Charset.forName("UTF-8"))
+                )
+            )
         } else {
             Failure(response.status.value, "Error")
         }

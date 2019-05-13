@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val builder = StringBuilder()
         viewModel.persons.observe(this, Observer {
             it.forEach {
-                builder.append(it.person).append("\n")
+                builder.append(it).append("\n")
                 persons.text = builder.toString()
             }
         })

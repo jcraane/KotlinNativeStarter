@@ -1,4 +1,4 @@
-package nl.jamiecraane.native.domain
+package nl.jamiecraane.nativestarter.domain
 
 import kotlinx.serialization.Serializable
 

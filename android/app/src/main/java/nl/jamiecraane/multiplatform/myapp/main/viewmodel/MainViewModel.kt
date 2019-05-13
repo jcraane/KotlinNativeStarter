@@ -6,17 +6,15 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import nl.jamiecraane.native.api.Failure
-import nl.jamiecraane.native.api.RealApi
-import nl.jamiecraane.native.api.Success
-import nl.jamiecraane.native.domain.Person
+import nl.jamiecraane.nativestarter.api.Failure
+import nl.jamiecraane.nativestarter.api.RealApi
+import nl.jamiecraane.nativestarter.api.Success
+import nl.jamiecraane.nativestarter.domain.Person
 
 class MainViewModel : ViewModel() {
     private val api = RealApi()
 
-//    todo why does this declaration generate a compiler error in de Kapt stage?
-//    val persons: MutableLiveData<List<Item>> = MutableLiveData(emptyList())
-    val persons: MutableLiveData<List<Item>> = MutableLiveData(emptyList())
+    val persons: MutableLiveData<List<Person>> = MutableLiveData()
     val errorText = MutableLiveData("")
 
     init {
@@ -27,8 +25,7 @@ class MainViewModel : ViewModel() {
 
             when (response) {
                 is Success -> {
-                    persons.value = response.data.map { Item(it) }
-//                    println("PERSONS ${response.data}")
+                    persons.value = response.data
                 }
                 is Failure -> errorText.value = "Error"
             }
