@@ -7,7 +7,11 @@ buildscript {
         
     }
 }
-repositories {
-    google()
-    jcenter()
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://dl.bintray.com/kotlin/ktor" }
+    }
 }

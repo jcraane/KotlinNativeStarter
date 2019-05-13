@@ -5,10 +5,14 @@ import io.ktor.client.features.logging.LogLevel
 import io.ktor.client.features.logging.Logger
 import io.ktor.client.features.logging.Logging
 import io.ktor.client.features.logging.SIMPLE
+import io.ktor.client.request.get
+import io.ktor.client.request.url
+import io.ktor.client.response.HttpResponse
+import io.ktor.http.Url
 import nl.jamiecraane.native.domain.Person
 
 class RealApi : Api {
-    private val httpClient = HttpClient {
+    private val client = HttpClient {
        install(Logging) {
             logger = Logger.SIMPLE
             level = LogLevel.ALL
@@ -16,6 +20,13 @@ class RealApi : Api {
     }
 
     override suspend fun retrievePersons(): List<Person> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val response = client.get<HttpResponse> {
+            url(Url("http://10.128.238.209:2500/persons"))
+        }
+
+        return emptyList()
+        /*if (response.status.isSuccess()) {
+
+        }*/
     }
 }
