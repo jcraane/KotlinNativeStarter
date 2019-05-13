@@ -5,6 +5,9 @@ plugins {
     kotlin("kapt")
 }
 
+val lifeCycleVersion = "2.1.0-alpha03"
+val coroutinesVersion = "1.1.1"
+
 android {
     compileSdkVersion(28)
     defaultConfig {
@@ -31,10 +34,15 @@ dependencies {
     implementation(project(":common"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.31")
-    implementation("com.android.support:appcompat-v7:28.0.0")
-    implementation("com.android.support.constraint:constraint-layout:1.1.3")
-    implementation("com.android.support:design:28.0.0")
+    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
+    implementation("androidx.appcompat:appcompat:1.1.0-alpha05")
+    implementation("androidx.lifecycle:lifecycle-extensions:$lifeCycleVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+    kapt("androidx.lifecycle:lifecycle-compiler:$lifeCycleVersion")
     testImplementation("junit:junit:4.12")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
     androidTestImplementation("com.android.support.test:runner:1.0.2")
     androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
 }

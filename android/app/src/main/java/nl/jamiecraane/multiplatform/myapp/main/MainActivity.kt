@@ -1,8 +1,9 @@
-package nl.jamiecraane.multiplatform.myapp
+package nl.jamiecraane.multiplatform.myapp.main
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import nl.jamiecraane.multiplatform.myapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
