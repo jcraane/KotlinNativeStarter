@@ -13,7 +13,7 @@ repositories {
     mavenCentral()
 }
 
-def ktor_version = "1.1.5"
+def ktor_version = "1.2.0"
 def kotlin_serialization = "0.11.0"
 def klockVersion = "1.4.0"
 
@@ -61,8 +61,8 @@ kotlin {
         iosMain {
             dependencies {
                 implementation("io.ktor:ktor-client-ios:$ktor_version")
-                implementation("io.ktor:ktor-client-json-ios:$ktor_version")
-                implementation("io.ktor:ktor-client-logging-ios:$ktor_version")
+//                implementation("io.ktor:ktor-client-json-ios:$ktor_version")
+//                implementation("io.ktor:ktor-client-logging-iosx64:$ktor_version")
                 api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization"
                 implementation("com.soywiz:klock-iosx64:$klockVersion")
             }

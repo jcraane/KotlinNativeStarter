@@ -1,10 +1,7 @@
 package nl.jamiecraane.nativestarter.api
 
+import com.soywiz.klock.DateTime
 import io.ktor.client.HttpClient
-import io.ktor.client.features.logging.LogLevel
-import io.ktor.client.features.logging.Logger
-import io.ktor.client.features.logging.Logging
-import io.ktor.client.features.logging.SIMPLE
 import io.ktor.client.request.get
 import io.ktor.client.request.url
 import io.ktor.client.response.HttpResponse
@@ -18,10 +15,10 @@ import nl.jamiecraane.nativestarter.domain.Person
 
 class RealApi : Api {
     private val client = HttpClient() {
-        install(Logging) {
+       /* install(Logging) {
             logger = Logger.SIMPLE
             level = LogLevel.ALL
-        }
+        }*/
 //        install(JsonFeature) {
 //            jsonfeature does not work nicely yet with list, following error:  Fail to run receive pipeline: kotlinx.serialization.SerializationException: Can't locate argument-less serializer for class kotlin.collections.List. For generic classes, such as lists, please provide serializer explicitly.
 //            serializer = KotlinxSerializer(Json.nonstrict)
@@ -41,7 +38,7 @@ class RealApi : Api {
         println("DATETIME = $datetime")
 
         val response = client.get<HttpResponse> {
-            url(Url("http://192.168.43.247:2500/persons"))
+            url(Url("http://10.128.238.209:2500/persons"))
         }
 
         return if (response.status.isSuccess()) {

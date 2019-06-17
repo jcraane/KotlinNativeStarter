@@ -6,7 +6,7 @@ plugins {
 }
 
 val lifeCycleVersion = "2.1.0-alpha03"
-val coroutinesVersion = "1.1.1"
+val coroutinesVersion = "1.2.1"
 val koinVersion = "1.0.2"
 
 android {
@@ -32,9 +32,10 @@ android {
         exclude("META-INF/common.kotlin_module")
         exclude("META-INF/*.kotlin_module")
     }
-    configurations {
-
-//        all * . exclude group: 'com.android.support', module: 'support-v4'
+    configurations.all {
+        exclude(
+            group = "com.soywiz.korlibs.klock", module = "klock-android-debug"
+        )
     }
 }
 
