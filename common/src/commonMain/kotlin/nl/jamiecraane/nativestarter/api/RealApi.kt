@@ -37,8 +37,11 @@ class RealApi : Api {
     }*/
 
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
+        val datetime = DateTime(2019, 6, 3)
+        println("DATETIME = $datetime")
+
         val response = client.get<HttpResponse> {
-            url(Url("http://192.168.1.48:2500/persons"))
+            url(Url("http://192.168.43.247:2500/persons"))
         }
 
         return if (response.status.isSuccess()) {

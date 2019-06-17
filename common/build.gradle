@@ -34,7 +34,8 @@ kotlin {
                 implementation("io.ktor:ktor-client-logging:$ktor_version")
                 implementation("io.ktor:ktor-client-json:$ktor_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialization")
-                implementation("com.soywiz:klock-metadata:$klockVersion")
+//                implementation("com.soywiz:klock-metadata:$klockVersion")
+                api "com.soywiz.korlibs.klock:klock:$klockVersion"
             }
         }
         commonTest {
