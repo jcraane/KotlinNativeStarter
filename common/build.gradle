@@ -5,16 +5,16 @@ buildscript {
 }
 
 plugins {
-    id 'kotlin-multiplatform' version '1.3.31'
-    id 'kotlinx-serialization' version '1.3.31'
+    id 'kotlin-multiplatform' version '1.3.40'
+    id 'kotlinx-serialization' version '1.3.40'
 }
 
 repositories {
     mavenCentral()
 }
 
-def ktor_version = "1.2.0"
-def kotlin_serialization = "0.11.0"
+def ktor_version = "1.2.2"
+def kotlin_serialization = "0.11.1"
 def klockVersion = "1.4.0"
 
 kotlin {
@@ -35,7 +35,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-json:$ktor_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialization")
 //                implementation("com.soywiz:klock-metadata:$klockVersion")
-                api "com.soywiz.korlibs.klock:klock:$klockVersion"
+//                api "com.soywiz.korlibs.klock:klock:$klockVersion"
             }
         }
         commonTest {
@@ -64,7 +64,7 @@ kotlin {
 //                implementation("io.ktor:ktor-client-json-ios:$ktor_version")
 //                implementation("io.ktor:ktor-client-logging-iosx64:$ktor_version")
                 api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization"
-                implementation("com.soywiz:klock-iosx64:$klockVersion")
+//                implementation("com.soywiz:klock-iosx64:$klockVersion")
             }
         }
         iosTest {

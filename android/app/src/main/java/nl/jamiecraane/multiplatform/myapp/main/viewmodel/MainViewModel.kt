@@ -3,10 +3,10 @@ package nl.jamiecraane.multiplatform.myapp.main.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soywiz.klock.DateTime
-import com.soywiz.klock.KlockLocale
-import com.soywiz.klock.format
-import com.soywiz.klock.locale.dutch
+//import com.soywiz.klock.DateTime
+//import com.soywiz.klock.KlockLocale
+//import com.soywiz.klock.format
+//import com.soywiz.klock.locale.dutch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,20 +24,24 @@ class MainViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-            val response = withContext(Dispatchers.IO) {
-                api.retrievePersons()
-            }
-
-            when (response) {
-                is Success -> {
-                    persons.value = response.data
-                }
-                is Failure -> errorText.value = "Error"
-            }
+            retrievePersons()
         }
 
-        val now = DateTime.now()
-        currentTime.value = KlockLocale.dutch.formatDateShort.format(now)
+//        val now = DateTime.now()
+//        currentTime.value = KlockLocale.dutch.formatDateShort.format(now)
+    }
+
+    private suspend fun retrievePersons() {
+        val response = withContext(Dispatchers.IO) {
+            api.retrievePersons()
+        }
+
+        when (response) {
+            is Success -> {
+                persons.value = response.data
+            }
+            is Failure -> errorText.value = "Error"
+        }
     }
 }
 
