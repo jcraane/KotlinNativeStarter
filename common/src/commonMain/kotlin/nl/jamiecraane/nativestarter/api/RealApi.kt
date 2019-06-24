@@ -5,6 +5,7 @@ package nl.jamiecraane.nativestarter.api
 //import io.ktor.client.features.logging.Logging
 //import io.ktor.client.features.logging.SIMPLE
 //import com.soywiz.klock.DateTime
+import com.soywiz.klock.DateTime
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.url
@@ -38,8 +39,8 @@ class RealApi : Api {
     }*/
 
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
-//        val datetime = DateTime(2019, 6, 3)
-//        println("DATETIME = $datetime")
+        val datetime = DateTime(2019, 6, 3)
+        println("DATETIME = $datetime")
 
         val response = client.get<HttpResponse> {
             url(Url("http://192.168.1.50:2500/persons"))

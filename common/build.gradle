@@ -15,7 +15,7 @@ repositories {
 
 def ktor_version = "1.2.2"
 def kotlin_serialization = "0.11.1"
-def klockVersion = "1.4.0"
+def klockVersion = "1.5.0"
 
 kotlin {
     jvm()
@@ -34,8 +34,10 @@ kotlin {
                 implementation("io.ktor:ktor-client-logging:$ktor_version")
                 implementation("io.ktor:ktor-client-json:$ktor_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialization")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialization")
 //                implementation("com.soywiz:klock-metadata:$klockVersion")
-//                api "com.soywiz.korlibs.klock:klock:$klockVersion"
+                implementation "com.soywiz.korlibs.klock:klock:$klockVersion"
+//                implementation "com.soywiz.korlibs.klock:klock-metadata:$klockVersion"
             }
         }
         commonTest {
@@ -50,6 +52,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:$ktor_version")
                 implementation("io.ktor:ktor-client-json-jvm:$ktor_version")
                 implementation("io.ktor:ktor-client-logging-jvm:$ktor_version")
+                implementation "com.soywiz.korlibs.klock:klock-jvm:$klockVersion"
             }
         }
         jvmTest {
