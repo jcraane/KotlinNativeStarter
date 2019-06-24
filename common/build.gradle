@@ -35,9 +35,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-json:$ktor_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialization")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialization")
-//                implementation("com.soywiz:klock-metadata:$klockVersion")
                 implementation "com.soywiz.korlibs.klock:klock:$klockVersion"
-//                implementation "com.soywiz.korlibs.klock:klock-metadata:$klockVersion"
             }
         }
         commonTest {
@@ -46,8 +44,7 @@ kotlin {
                 implementation kotlin('test-annotations-common')
             }
         }
-        jvmMain {
-            dependencies {
+        jvmMain {            dependencies {
                 implementation kotlin('stdlib')
                 implementation("io.ktor:ktor-client-android:$ktor_version")
                 implementation("io.ktor:ktor-client-json-jvm:$ktor_version")
@@ -67,7 +64,7 @@ kotlin {
 //                implementation("io.ktor:ktor-client-json-ios:$ktor_version")
 //                implementation("io.ktor:ktor-client-logging-iosx64:$ktor_version")
                 api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization"
-//                implementation("com.soywiz:klock-iosx64:$klockVersion")
+                implementation "com.soywiz.korlibs.klock:klock-iosx64:$klockVersion"
             }
         }
         iosTest {
