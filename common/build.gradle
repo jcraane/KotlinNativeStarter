@@ -44,12 +44,13 @@ kotlin {
                 implementation kotlin('test-annotations-common')
             }
         }
-        jvmMain {            dependencies {
+        jvmMain {
+            dependencies {
                 implementation kotlin('stdlib')
                 implementation("io.ktor:ktor-client-android:$ktor_version")
                 implementation("io.ktor:ktor-client-json-jvm:$ktor_version")
                 implementation("io.ktor:ktor-client-logging-jvm:$ktor_version")
-                implementation "com.soywiz.korlibs.klock:klock-jvm:$klockVersion"
+                api "com.soywiz.korlibs.klock:klock-jvm:$klockVersion"
             }
         }
         jvmTest {

@@ -3,6 +3,7 @@ package nl.jamiecraane.multiplatform.myapp.main.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.soywiz.klock.DateTime
 //import com.soywiz.klock.DateTime
 //import com.soywiz.klock.KlockLocale
 //import com.soywiz.klock.format
@@ -27,7 +28,8 @@ class MainViewModel : ViewModel() {
             retrievePersons()
         }
 
-//        val now = DateTime.now()
+        val now = DateTime.now()
+        println("DATETIME IN ANDROID $now")
 //        currentTime.value = KlockLocale.dutch.formatDateShort.format(now)
     }
 
