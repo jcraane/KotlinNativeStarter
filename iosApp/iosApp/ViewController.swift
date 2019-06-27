@@ -7,9 +7,9 @@ class ViewController: UIViewController {
         label.text = Proxy().proxyHello()
         
         let api = IosApiWrapper()
-        api.retrievePersons(success: { ([Person]) in
-            print("Success")
-        }, failure: {(throwable: KotlinThrowable?) in
+        api.retrievePersons(success: { (persons: [Person]) in
+            print("Success, got \(persons)")
+        }, failure: { (throwable: KotlinThrowable?) in
             print("Error")
         })
         

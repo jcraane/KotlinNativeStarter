@@ -9,7 +9,7 @@ internal expect val ApplicationDispatcher: CoroutineDispatcher
 
 class IosApiWrapper {
     fun retrievePersons(success: (List<Person>) -> Unit, failure: (Throwable?) -> Unit) {
-        GlobalScope.launch {
+        GlobalScope.launch(ApplicationDispatcher) {
             try {
                 val response = RealApi().retrievePersons()
                 if (response is Success) {
