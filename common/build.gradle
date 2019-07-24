@@ -17,18 +17,24 @@ def ktor_version = "1.2.2"
 def kotlin_serialization = "0.11.1"
 def klockVersion = "1.5.0"
 
+def rootTarget = project.findProperty('kotlin.target') ?: 'x86_64'
+println("TARGET IN ROOT = $rootTarget")
+
 kotlin {
     jvm()
     // This is for iPhone emulator
     // Switch here to iosArm64 (or iosArm32) to build library for iPhone device
-    iosArm64("iosArm64") {
-        binaries {
-            framework()
+    if (rootTarget == "x86_64") {
+        iosX64("ios") {
+            binaries {
+                framework()
+            }
         }
-    }
-    iosX64("iosX64") {
-        binaries {
-            framework()
+    } else {
+        iosArm64("ios") {
+            binaries {
+                framework()
+            }
         }
     }
     sourceSets {
@@ -92,7 +98,8 @@ kotlin {
 // make sure all Gradle infrastructure exists (gradle.wrapper, gradlew).
 task copyFramework {
     def buildType = project.findProperty('kotlin.build.type') ?: 'DEBUG'
-    def target = project.findProperty('kotlin.target') ?: 'ios'
+//    def target = project.findProperty('kotlin.target') ?: 'ios'
+    def target = 'ios'
     dependsOn kotlin.targets."$target".binaries.getFramework(buildType).linkTask
 
     doLast {
