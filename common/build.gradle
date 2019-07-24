@@ -21,7 +21,12 @@ kotlin {
     jvm()
     // This is for iPhone emulator
     // Switch here to iosArm64 (or iosArm32) to build library for iPhone device
-    iosX64("ios") {
+    iosArm64("iosArm64") {
+        binaries {
+            framework()
+        }
+    }
+    iosX64("iosX64") {
         binaries {
             framework()
         }
@@ -62,9 +67,16 @@ kotlin {
         iosMain {
             dependencies {
                 implementation("io.ktor:ktor-client-ios:$ktor_version")
-//                implementation("io.ktor:ktor-client-json-ios:$ktor_version")
-//                implementation("io.ktor:ktor-client-logging-iosx64:$ktor_version")
                 api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization"
+            }
+        }
+        iosArm64 {
+            dependencies {
+                implementation "com.soywiz.korlibs.klock:klock-iosarm64:$klockVersion"
+            }
+        }
+        iosX64 {
+            dependencies {
                 implementation "com.soywiz.korlibs.klock:klock-iosx64:$klockVersion"
             }
         }
