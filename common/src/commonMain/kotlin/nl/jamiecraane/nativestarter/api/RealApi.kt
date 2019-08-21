@@ -14,7 +14,6 @@ import io.ktor.client.response.readText
 import io.ktor.http.Url
 import io.ktor.http.isSuccess
 import kotlinx.io.charsets.Charset
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 import nl.jamiecraane.nativestarter.domain.Person
 
@@ -48,7 +47,7 @@ class RealApi : Api {
 
         return if (response.status.isSuccess()) {
             Success(
-                Json.nonstrict.parse(
+                jsonParser.parse(
                     Person.serializer().list,
                     response.readText(Charset.forName("UTF-8"))
                 )
