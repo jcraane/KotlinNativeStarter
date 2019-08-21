@@ -9,7 +9,7 @@ class ViewController: UIViewController {
         let api = IosApiWrapper()
         api.retrievePersons(success: { [weak self] (persons: [Person]) in
             print("Success, got \(persons)")
-            self?.handle(persons: persons)
+            //self?.handle(persons: persons) Enable to demonstrate
         }, failure: { (throwable: KotlinThrowable?) in
             print("Error; \(throwable?.description() ?? "")")
         })
@@ -22,10 +22,18 @@ class ViewController: UIViewController {
     
     private func handle(persons: [Person]) {
         
+        //Issue demonstrating https://github.com/JetBrains/kotlin-native/issues/2470 and https://github.com/JetBrains/kotlin-native/issues/2443
+        
+        let otherPersons = persons.map { (p) -> Person in
+            return p
+        }
+        
+        let otherArray: [Person] = Array(otherPersons)
+        
         DispatchQueue.global(qos: .background).async {
             print("This is run on the background queue")
             
-            persons.forEach { person in
+            otherArray.forEach { person in
                 print("Person = \(person.firstName)")
             }
             
