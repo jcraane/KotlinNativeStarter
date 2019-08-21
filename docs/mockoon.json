@@ -1,0 +1,45 @@
+{
+  "id": "mockoon_export",
+  "appVersion": "1.4.0",
+  "checksum": "f94e4f1ced791a2fcc568f974fff70d1",
+  "subject": "environment",
+  "data": {
+    "uuid": "ecef08d0-c3eb-11e9-9542-794f1719b82f",
+    "name": "Test API",
+    "endpointPrefix": "",
+    "latency": 0,
+    "port": 2500,
+    "routes": [
+      {
+        "uuid": "ecef08d1-c3eb-11e9-9542-794f1719b82f",
+        "documentation": "Retrieve persons",
+        "method": "get",
+        "endpoint": "persons",
+        "body": "[\n  {\n    \"firstName\": \"Jan\",\n    \"lastName\": \"Janssen\"\n  },\n  {\n    \"firstName\": \"Kees\",\n    \"lastName\": \"Klaasen\"\n  }\n]\n",
+        "latency": 0,
+        "statusCode": "200",
+        "headers": [
+          {
+            "uuid": "0def8aa1-6a6e-11e9-9240-09bf483e66a3",
+            "key": "",
+            "value": ""
+          }
+        ],
+        "filePath": "",
+        "sendFileAsBody": false
+      }
+    ],
+    "modifiedAt": "2019-05-20T18:43:21.129Z",
+    "proxyMode": false,
+    "proxyHost": "",
+    "https": false,
+    "cors": true,
+    "headers": [
+      {
+        "uuid": "ac5dd952-681e-11e9-9240-09bf483e66a3",
+        "key": "Content-Type",
+        "value": "application/json"
+      }
+    ]
+  }
+}
