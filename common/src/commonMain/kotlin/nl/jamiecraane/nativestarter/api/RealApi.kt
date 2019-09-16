@@ -30,19 +30,21 @@ class RealApi : Api {
     }
 
 
-    /* {
+/*
+     {
        install(Logging) {
             logger = Logger.SIMPLE
             level = LogLevel.ALL
         }
-    }*/
+    }
+*/
 
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
         val datetime = DateTime(2019, 6, 3)
         println("DATETIME = $datetime")
 
         val response = client.get<HttpResponse> {
-            url(Url("http://localhost:2500/persons"))
+            url(Url("http://10.128.238.209:2500/persons"))
         }
 
         return if (response.status.isSuccess()) {

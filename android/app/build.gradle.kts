@@ -41,10 +41,11 @@ android {
 
 dependencies {
     implementation(project(":common"))
+    implementation(project(":testlibrary"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    implementation("androidx.appcompat:appcompat:1.1.0-alpha05")
+    implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.lifecycle:lifecycle-extensions:$lifeCycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
