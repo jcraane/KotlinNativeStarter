@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_main.*
-import nl.jamiecraane.multiplatform.lib.Echo
 import nl.jamiecraane.multiplatform.myapp.R
 import nl.jamiecraane.multiplatform.myapp.databinding.ActivityMainBinding
 import nl.jamiecraane.multiplatform.myapp.main.viewmodel.MainViewModel
@@ -32,6 +31,6 @@ class MainActivity : AppCompatActivity() {
             errorText.text = it
         })
 
-        echoOutput.text = Echo.sayHello()
+        echoOutput.text = Echo.sayHelloEcho()
     }
 }

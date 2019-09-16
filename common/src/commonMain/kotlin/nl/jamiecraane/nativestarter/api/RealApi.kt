@@ -16,6 +16,7 @@ import io.ktor.http.isSuccess
 import kotlinx.io.charsets.Charset
 import kotlinx.serialization.list
 import nl.jamiecraane.nativestarter.domain.Person
+import nl.jamiecraane.nativestarter.log.log
 
 class RealApi : Api {
     private val client = HttpClient() {
@@ -40,6 +41,7 @@ class RealApi : Api {
 */
 
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
+        log("RETRIEVEPERSONS")
         val datetime = DateTime(2019, 6, 3)
         println("DATETIME = $datetime")
 
