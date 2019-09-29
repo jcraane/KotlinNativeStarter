@@ -39,7 +39,6 @@ class RealApi : Api {
         }
     }
 */
-
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
         log("RETRIEVEPERSONS")
         val datetime = DateTime(2019, 6, 3)

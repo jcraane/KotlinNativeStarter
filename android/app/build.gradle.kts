@@ -1,3 +1,6 @@
+import nl.jamiecraane.buildscript.Localize
+import nl.jamiecraane.buildscript.MoveLocalizedFiles
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
