@@ -23,9 +23,12 @@ open class MoveLocalizedFiles : DefaultTask() {
         val nameWithoutLang = file.substring(file.indexOf(".") + 1, file.length)
         val lang = file.substring(0, file.indexOf("."))
         val flavor = nameWithoutLang.substring(nameWithoutLang.indexOf("_") + 1, nameWithoutLang.lastIndexOf("."))
+        println("FLAVOR = $flavor")
         val flavorFolder = getFlavorFolder(flavor)
+        println("FLAVORFOLDER = $flavorFolder")
         val fileToCopy = File(output, file)
         val destination = File(source, "$flavorFolder/res/${getValuesFolder(lang)}/$nameWithoutLang")
+        println("DESTINATION = $destination")
         fileToCopy.copyTo(destination, true)
     }
 

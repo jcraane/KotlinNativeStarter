@@ -1,3 +1,6 @@
+import nl.jamiecraane.buildscript.Localize
+import nl.jamiecraane.buildscript.MoveLocalizedFiles
+
 buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-serialization:1.3.50"
@@ -145,4 +148,36 @@ task copyFramework {
             include 'common.framework.dSYM'
         }
     }
+}
+
+def localizationProjectFolder = "localization"
+def pathToLocalizeProject = new File(gradle.rootProject.projectDir, localizationProjectFolder)
+def projectSourceFolder = new File(projectDir, "src")
+def outputDir = new File(projectDir, "generated")
+
+task localize(type: Localize) {
+    inputs.dir(pathToLocalizeProject)
+    outputs.dir(outputDir)
+    outputFolder = outputDir
+    repoLocation = pathToLocalizeProject
+}
+
+task moveLocalizeFiles(type: MoveLocalizedFiles) {
+    output = outputDir
+    source = projectSourceFolder
+    dependsOn(localize)
+}
+
+task cleanGenerated {
+    doLast {
+        outputDir.delete()
+    }
+}
+
+preBuild {
+    dependsOn(moveLocalizeFiles)
+}
+
+clean {
+    dependsOn(cleanGenerated)
 }
