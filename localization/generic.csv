@@ -3,3 +3,6 @@ key,nl,en
 button.ok,Ok,Ok
 button.yes,Ja,Yes
 button.no,Nee,No
+enum.bad,Slecht,Bad
+enum.medium,Gemiddeld,Medium
+enum.good,Goed,Good

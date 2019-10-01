@@ -3,4 +3,7 @@
 	<string name="button.ok">Ok</string>
 	<string name="button.yes">Ja</string>
 	<string name="button.no">Nee</string>
+	<string name="enum.bad">Slecht</string>
+	<string name="enum.medium">Gemiddeld</string>
+	<string name="enum.good">Goed</string>
 </resources>
