@@ -88,7 +88,7 @@ kotlin {
         description = "Builds a universal (fat) ${buildType.toLowerCase()} framework"
 
         doLast {
-            val targetDir = property("configuration.build.dir")
+            val targetDir = findProperty("configuration.build.dir")
 //             This task attaches native framework built from ios module to Xcode project
             copy {
                 from(destinationDir)
