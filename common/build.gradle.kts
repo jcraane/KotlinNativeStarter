@@ -78,13 +78,14 @@ kotlin {
         }
     }
 
-    tasks.create("debugFatFramework", FatFrameworkTask::class) {
+    tasks.create("buildFatFramework", FatFrameworkTask::class) {
         baseName = frameworkName
-        from(targets.map { it.binaries.getFramework("DEBUG") })
+        val buildType = (project.findProperty("kotlin.build.type") ?: "DEBUG") as String
+        from(targets.map { it.binaries.getFramework(buildType) })
 
-        destinationDir = buildDir.resolve("fat-framework/debug")
+        destinationDir = buildDir.resolve("fat-framework/${buildType.toLowerCase()}")
         group = "Universal framework"
-        description = "Builds a universal (fat) debug framework"
+        description = "Builds a universal (fat) ${buildType.toLowerCase()} framework"
 
         doLast {
             val targetDir = property("configuration.build.dir")
