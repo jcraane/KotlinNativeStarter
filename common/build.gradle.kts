@@ -1,19 +1,19 @@
+
 import nl.jamiecraane.buildscript.Localize
 import nl.jamiecraane.buildscript.MoveLocalizedFiles
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.3.50")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.3.60")
     }
 }
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("kotlinx-serialization") version "1.3.50"
+    id("kotlinx-serialization") version "1.3.60"
 }
 
 repositories {
@@ -22,7 +22,7 @@ repositories {
 
 val ktor_version = "1.2.4"
 val kotlin_serialization = "0.12.0"
-val klockVersion = "1.6.2"
+val klockVersion = "1.8.0"
 
 android {
     compileSdkVersion(29)
@@ -45,7 +45,7 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.60")
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.core:core-ktx:1.1.0")
     implementation("com.jakewharton.timber:timber:4.7.1")
