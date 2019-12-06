@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.3.60")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.3.61")
     }
 }
 
@@ -45,7 +45,7 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.60")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61")
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.core:core-ktx:1.1.0")
     implementation("com.jakewharton.timber:timber:4.7.1")
