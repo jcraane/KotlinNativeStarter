@@ -45,8 +45,7 @@ android {
 dependencies {
     implementation(project(":common"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-//    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.60")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.60")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("com.jakewharton.timber:timber:4.7.1")
