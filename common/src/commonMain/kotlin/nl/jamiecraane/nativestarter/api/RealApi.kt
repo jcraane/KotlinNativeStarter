@@ -45,7 +45,7 @@ class RealApi : Api {
         println("DATETIME = $datetime")
 
         val response = client.get<HttpResponse> {
-            url(Url("http://192.168.1.48:2500/persons"))
+            url(Url("http://10.0.2.2:2500/persons"))
         }
 
         return if (response.status.isSuccess()) {
