@@ -20,12 +20,22 @@ class MainViewModel : ViewModel() {
     private val api = RealApi()
 
     val persons: MutableLiveData<List<Person>> = MutableLiveData()
+    val message = MutableLiveData<String>()
     val errorText = MutableLiveData("")
     val currentTime = MutableLiveData<String>()
 
     init {
         viewModelScope.launch {
             retrievePersons()
+        }
+
+        viewModelScope.launch {
+            val m = withContext(Dispatchers.IO) {
+                api.sayHello()
+            }
+            if (m is Success) {
+                message.value = m.data
+            }
         }
 
         val now = DateTime.now()

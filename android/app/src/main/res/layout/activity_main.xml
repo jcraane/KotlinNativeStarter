@@ -52,8 +52,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/button.yes"/>
 
-        <ImageView
-                android:id="@+id/image"
+        <TextView
+                android:id="@+id/serverMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
     </LinearLayout>

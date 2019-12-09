@@ -15,30 +15,15 @@ import io.ktor.http.Url
 import io.ktor.http.isSuccess
 import kotlinx.io.charsets.Charset
 import kotlinx.serialization.list
+import nl.jamiecraane.nativestarter.domain.Message
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.log.log
 
 class RealApi : Api {
     private val client = HttpClient() {
-//        install(Logging) {
-//            logger = Logger.SIMPLE
-//            level = LogLevel.HEADERS
-//        }
-//        install(JsonFeature) {
-//            jsonfeature does not work nicely yet with list, following error:  Fail to run receive pipeline: kotlinx.serialization.SerializationException: Can't locate argument-less serializer for class kotlin.collections.List. For generic classes, such as lists, please provide serializer explicitly.
-//            serializer = KotlinxSerializer(Json.nonstrict)
-//        }
+
     }
 
-
-/*
-     {
-       install(Logging) {
-            logger = Logger.SIMPLE
-            level = LogLevel.ALL
-        }
-    }
-*/
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
         log("RETRIEVEPERSONS")
         val datetime = DateTime(2019, 6, 3)
@@ -54,6 +39,27 @@ class RealApi : Api {
                     Person.serializer().list,
                     response.readText(Charset.forName("UTF-8"))
                 )
+            )
+        } else {
+            Failure(response.status.value, "Error")
+        }
+    }
+
+    override suspend fun sayHello(): ApiResponse<String> {
+        log("SayHello")
+        val datetime = DateTime(2019, 6, 3)
+        println("DATETIME = $datetime")
+
+        val response = client.get<HttpResponse> {
+            url(Url("http://192.168.1.241:2500/sayhello"))
+        }
+
+        return if (response.status.isSuccess()) {
+            Success(
+                jsonParser.parse(
+                    Message.serializer(),
+                    response.readText(Charset.forName("UTF-8"))
+                ).message
             )
         } else {
             Failure(response.status.value, "Error")

@@ -30,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.errorText.observe(this, Observer {
             errorText.text = it
         })
+        viewModel.message.observe(this, Observer {
+            serverMessage.text = it
+        })
+
 
         echoOutput.text = Echo.sayHelloEcho()
     }

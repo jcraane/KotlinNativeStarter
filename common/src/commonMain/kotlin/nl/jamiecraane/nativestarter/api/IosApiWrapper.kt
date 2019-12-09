@@ -22,4 +22,19 @@ class IosApiWrapper {
             }
         }
     }
+
+    fun sayHelloFromServer(success: (String) -> Unit, failure: (Throwable?) -> Unit) {
+        GlobalScope.launch(ApplicationDispatcher) {
+            try {
+                val response = RealApi().sayHello()
+                if (response is Success) {
+                    success(response.data)
+                } else {
+                    failure(null)
+                }
+            } catch (e: Exception) {
+                failure(e)
+            }
+        }
+    }
 }
