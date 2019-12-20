@@ -1,7 +1,7 @@
 {
   "id": "mockoon_export",
-  "appVersion": "1.4.0",
-  "checksum": "f94e4f1ced791a2fcc568f974fff70d1",
+  "appVersion": "1.6.0",
+  "checksum": "a941fe2cb76dcac520a97222082b1b4d",
   "subject": "environment",
   "data": {
     "uuid": "ecef08d0-c3eb-11e9-9542-794f1719b82f",
@@ -15,18 +15,74 @@
         "documentation": "Retrieve persons",
         "method": "get",
         "endpoint": "persons",
-        "body": "[\n  {\n    \"firstName\": \"Jan\",\n    \"lastName\": \"Janssen\"\n  },\n  {\n    \"firstName\": \"Kees\",\n    \"lastName\": \"Klaasen\"\n  }\n]\n",
-        "latency": 0,
-        "statusCode": "200",
-        "headers": [
+        "responses": [
           {
-            "uuid": "0def8aa1-6a6e-11e9-9240-09bf483e66a3",
-            "key": "",
-            "value": ""
+            "uuid": "3139f1bb-11c2-11ea-8347-e1f48010d678",
+            "statusCode": "200",
+            "latency": 0,
+            "filePath": "",
+            "sendFileAsBody": false,
+            "headers": [
+              {
+                "uuid": "0def8aa1-6a6e-11e9-9240-09bf483e66a3",
+                "key": "",
+                "value": ""
+              }
+            ],
+            "body": "[\n  {\n    \"firstName\": \"Jan\",\n    \"lastName\": \"Janssen\"\n  },\n  {\n    \"firstName\": \"Kees\",\n    \"lastName\": \"Klaasen\"\n  },\n  {\n    \"firstName\": \"Jamie\",\n    \"lastName\": \"Craane\"\n  },\n  {\n    \"firstName\": \"Karel\",\n    \"lastName\": \"Karels\"\n  },\n  {\n    \"firstName\": \"Henk\",\n    \"lastName\": \"Janssen\"\n  },\n  {\n    \"firstName\": \"Jantje\",\n    \"lastName\": \"Klaasen\"\n  },\n  {\n    \"firstName\": \"Victor\",\n    \"lastName\": \"Maas\"\n  },\n  {\n    \"firstName\": \"Mien\",\n    \"lastName\": \"Klaasen\"\n  }\n]\n",
+            "rules": []
           }
         ],
-        "filePath": "",
-        "sendFileAsBody": false
+        "enabled": true
+      },
+      {
+        "uuid": "ea7b3090-234c-11ea-a401-51ad47773933",
+        "documentation": "Retrieve persons",
+        "method": "get",
+        "endpoint": "tasks",
+        "responses": [
+          {
+            "uuid": "ea7b57a0-234c-11ea-a401-51ad47773933",
+            "statusCode": "200",
+            "latency": 0,
+            "filePath": "",
+            "sendFileAsBody": false,
+            "headers": [
+              {
+                "uuid": "0def8aa1-6a6e-11e9-9240-09bf483e66a3",
+                "key": "",
+                "value": ""
+              }
+            ],
+            "body": "[\n  {\n    \"id\":  1,\n    \"name\": \"Uren inboeken\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Administratie\"\n  }\n]\n",
+            "rules": []
+          }
+        ],
+        "enabled": true
+      },
+      {
+        "uuid": "1f872ab0-1a96-11ea-b705-ed8ded7f5ef6",
+        "documentation": "",
+        "method": "get",
+        "endpoint": "sayhello",
+        "responses": [
+          {
+            "uuid": "1f872ab1-1a96-11ea-b705-ed8ded7f5ef6",
+            "body": "{\n    \"message\": \"Hello app user from backend\"\n}",
+            "latency": 0,
+            "statusCode": "200",
+            "headers": [
+              {
+                "key": "",
+                "value": ""
+              }
+            ],
+            "filePath": "",
+            "sendFileAsBody": false,
+            "rules": []
+          }
+        ],
+        "enabled": true
       }
     ],
     "modifiedAt": "2019-05-20T18:43:21.129Z",
