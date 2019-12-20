@@ -1,17 +1,21 @@
 import UIKit
 import common
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var persons: [Person] = []
+    let cellIdentifier = "CellIdentifier"
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = Proxy().proxyHello()
-        button.setTitle("MyButton", for: .normal)
-         button.addTarget(self, action: #selector(buttonTapped(sender:)), for: UIControlEvents.touchUpInside)
+        title = "Persons"
         
-        let api = IosApiWrapper()
+        let api = ApiWrapper()
         api.retrievePersons(success: { [weak self] (persons: [Person]) in
             print("Success, got \(persons)")
-            //self?.handle(persons: persons) Enable to demonstrate
+            self?.persons.removeAll()
+            self?.persons.append(contentsOf: persons)
+            self?.tableView.reloadData()
         }, failure: { (throwable: KotlinThrowable?) in
             print("Error; \(throwable?.description() ?? "")")
         })
@@ -24,15 +28,24 @@ class ViewController: UIViewController {
         })
     }
     
-     @objc func buttonTapped(sender: UIButton) {
-           print("Button was tapped")
-       }
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return persons.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let person = persons[indexPath.row]
+        cell.textLabel?.text = person.fullname
+        return cell
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var button: UIButton!
     
     private func handle(persons: [Person]) {
         

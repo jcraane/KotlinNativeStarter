@@ -8,7 +8,7 @@ import nl.jamiecraane.nativestarter.domain.Task
 
 internal expect val ApplicationDispatcher: CoroutineDispatcher
 
-class IosApiWrapper {
+class ApiWrapper {
     fun retrievePersons(success: (List<Person>) -> Unit, failure: (Throwable?) -> Unit) {
         execute(success, failure) {
             RealApi().retrievePersons()
