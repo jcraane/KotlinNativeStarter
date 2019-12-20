@@ -5,6 +5,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         label.text = Proxy().proxyHello()
+        button.setTitle("MyButton", for: .normal)
+         button.addTarget(self, action: #selector(buttonTapped(sender:)), for: UIControlEvents.touchUpInside)
         
         let api = IosApiWrapper()
         api.retrievePersons(success: { [weak self] (persons: [Person]) in
@@ -13,12 +15,19 @@ class ViewController: UIViewController {
         }, failure: { (throwable: KotlinThrowable?) in
             print("Error; \(throwable?.description() ?? "")")
         })
+        
+
     }
+    
+     @objc func buttonTapped(sender: UIButton) {
+           print("Button was tapped")
+       }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var button: UIButton!
     
     private func handle(persons: [Person]) {
         

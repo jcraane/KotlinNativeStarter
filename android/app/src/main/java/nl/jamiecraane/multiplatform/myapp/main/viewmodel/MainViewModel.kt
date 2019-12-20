@@ -15,27 +15,22 @@ import nl.jamiecraane.nativestarter.api.Failure
 import nl.jamiecraane.nativestarter.api.RealApi
 import nl.jamiecraane.nativestarter.api.Success
 import nl.jamiecraane.nativestarter.domain.Person
+import nl.jamiecraane.nativestarter.domain.Task
 
 class MainViewModel : ViewModel() {
     private val api = RealApi()
 
     val persons: MutableLiveData<List<Person>> = MutableLiveData()
+    val tasks: MutableLiveData<List<Task>> = MutableLiveData()
     val message = MutableLiveData<String>()
     val errorText = MutableLiveData("")
     val currentTime = MutableLiveData<String>()
 
     init {
+//        todo test retrieve async
         viewModelScope.launch {
             retrievePersons()
-        }
-
-        viewModelScope.launch {
-            val m = withContext(Dispatchers.IO) {
-                api.sayHello()
-            }
-            if (m is Success) {
-                message.value = m.data
-            }
+            retrieveTasks()
         }
 
         val now = DateTime.now()
@@ -53,6 +48,16 @@ class MainViewModel : ViewModel() {
                 persons.value = response.data
             }
             is Failure -> errorText.value = "Error"
+        }
+    }
+
+    private suspend fun retrieveTasks() {
+        val tasksResponse = withContext(Dispatchers.IO) {
+            api.retrieveTask()
+        }
+
+        if (tasksResponse is Success) {
+            tasks.value = tasksResponse.data
         }
     }
 }

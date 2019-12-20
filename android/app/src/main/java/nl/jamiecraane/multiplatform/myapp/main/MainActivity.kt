@@ -27,6 +27,13 @@ class MainActivity : AppCompatActivity() {
                 persons.text = builder.toString()
             }
         })
+        val taskBuilder = StringBuilder()
+        viewModel.tasks.observe(this, Observer {
+            it.forEach {
+                taskBuilder.append(it).append("\n")
+                tasks.text = taskBuilder.toString()
+            }
+        })
         viewModel.errorText.observe(this, Observer {
             errorText.text = it
         })
