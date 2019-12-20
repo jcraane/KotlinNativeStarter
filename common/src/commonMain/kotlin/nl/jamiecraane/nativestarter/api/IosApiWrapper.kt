@@ -8,36 +8,33 @@ import nl.jamiecraane.nativestarter.domain.Task
 
 internal expect val ApplicationDispatcher: CoroutineDispatcher
 
-//todo can we make this generic? Or at least use live templates for this
 class IosApiWrapper {
     fun retrievePersons(success: (List<Person>) -> Unit, failure: (Throwable?) -> Unit) {
         GlobalScope.launch(ApplicationDispatcher) {
-            try {
-                val response = RealApi().retrievePersons()
-                if (response is Success) {
-                    success(response.data)
-                } else {
-                    failure(null)
-                }
-            } catch (e: Exception) {
-                failure(e)
+            execute(success, failure) {
+                RealApi().retrievePersons()
             }
         }
     }
 
     fun retrieveTasks(success: (List<Task>) -> Unit, failure: (Throwable?) -> Unit) {
         GlobalScope.launch(ApplicationDispatcher) {
-            try {
-                val response = RealApi().retrieveTasks()
-                if (response is Success) {
-                    success(response.data)
-                } else {
-                    failure(null)
-                }
-            } catch (e: Exception) {
-                failure(e)
+            execute(success, failure) {
+                RealApi().retrieveTasks()
             }
         }
     }
 
+    private suspend fun <T> execute(success: (T) -> Unit, failure: (Throwable?) -> Unit, block: suspend () -> ApiResponse<T>) {
+        try {
+            val response = block()
+            if (response is Success) {
+                success(response.data)
+            } else {
+                failure(null)
+            }
+        } catch (exception: Exception) {
+            failure(exception)
+        }
+    }
 }
