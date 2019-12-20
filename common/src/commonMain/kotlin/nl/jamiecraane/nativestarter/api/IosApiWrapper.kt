@@ -4,6 +4,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import nl.jamiecraane.nativestarter.domain.Person
+import nl.jamiecraane.nativestarter.domain.Task
 
 internal expect val ApplicationDispatcher: CoroutineDispatcher
 
@@ -23,4 +24,20 @@ class IosApiWrapper {
             }
         }
     }
+
+    fun retrieveTasks(success: (List<Task>) -> Unit, failure: (Throwable?) -> Unit) {
+        GlobalScope.launch(ApplicationDispatcher) {
+            try {
+                val response = RealApi().retrieveTasks()
+                if (response is Success) {
+                    success(response.data)
+                } else {
+                    failure(null)
+                }
+            } catch (e: Exception) {
+                failure(e)
+            }
+        }
+    }
+
 }

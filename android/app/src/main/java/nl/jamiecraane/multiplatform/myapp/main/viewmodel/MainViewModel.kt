@@ -53,7 +53,7 @@ class MainViewModel : ViewModel() {
 
     private suspend fun retrieveTasks() {
         val tasksResponse = withContext(Dispatchers.IO) {
-            api.retrieveTask()
+            api.retrieveTasks()
         }
 
         if (tasksResponse is Success) {

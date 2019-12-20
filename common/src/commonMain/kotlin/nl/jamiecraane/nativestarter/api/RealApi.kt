@@ -48,7 +48,7 @@ class RealApi : Api {
         }
     }
 
-    override suspend fun retrieveTask(): ApiResponse<List<Task>> {
+    override suspend fun retrieveTasks(): ApiResponse<List<Task>> {
         println("RETRIEVE TASKS")
         return withinTryCatch<List<Task>> {
             val response = client.get<HttpResponse> {

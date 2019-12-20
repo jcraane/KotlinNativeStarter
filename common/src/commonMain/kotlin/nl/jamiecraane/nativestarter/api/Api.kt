@@ -5,5 +5,5 @@ import nl.jamiecraane.nativestarter.domain.Task
 
 interface Api {
     suspend fun retrievePersons(): ApiResponse<List<Person>>
-    suspend fun retrieveTask(): ApiResponse<List<Task>>
+    suspend fun retrieveTasks(): ApiResponse<List<Task>>
 }

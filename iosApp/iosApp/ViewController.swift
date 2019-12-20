@@ -16,7 +16,12 @@ class ViewController: UIViewController {
             print("Error; \(throwable?.description() ?? "")")
         })
         
-
+        api.retrieveTasks(success: { [weak self] (tasks: [Task]) in
+            print("Success, got \(tasks)")
+            //self?.handle(persons: persons) Enable to demonstrate
+        }, failure: { (throwable: KotlinThrowable?) in
+            print("Error; \(throwable?.description() ?? "")")
+        })
     }
     
      @objc func buttonTapped(sender: UIButton) {
