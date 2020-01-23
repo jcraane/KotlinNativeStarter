@@ -48,6 +48,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61")
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.core:core-ktx:1.1.0")
+    implementation("io.ktor:ktor-client-okhttp:$ktor_version")
     implementation("com.jakewharton.timber:timber:4.7.1")
     testImplementation("junit:junit:4.12")
     androidTestImplementation("androidx.test:runner:1.2.0")
