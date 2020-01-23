@@ -41,6 +41,9 @@ class MainActivity : AppCompatActivity() {
             serverMessage.text = it
         })
 
+        parallel.setOnClickListener {
+            viewModel.parallel()
+        }
 
         echoOutput.text = Echo.sayHelloEcho()
     }

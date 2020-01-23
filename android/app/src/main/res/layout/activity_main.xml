@@ -7,7 +7,7 @@
 
         <variable
                 name="viewModel"
-                type="nl.jamiecraane.multiplatform.myapp.main.viewmodel.MainViewModel" />
+                type="nl.jamiecraane.multiplatform.myapp.main.viewmodel.MainViewModel"/>
     </data>
 
     <LinearLayout
@@ -21,39 +21,39 @@
                 android:id="@+id/message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="MainActivity" />
+                tools:text="MainActivity"/>
 
         <TextView
                 android:id="@+id/dateTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.currentTime}" />
+                android:text="@{viewModel.currentTime}"/>
 
         <TextView
                 android:id="@+id/persons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="MainActivity" />
+                tools:text="MainActivity"/>
 
         <TextView
                 android:id="@+id/tasks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="MainActivity" />
+                tools:text="MainActivity"/>
 
         <TextView
                 android:id="@+id/errorText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="MainActivity" />
+                tools:text="MainActivity"/>
 
         <TextView
                 android:id="@+id/echoOutput"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/yes"
+                android:id="@+id/yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/button.yes"/>
@@ -62,5 +62,11 @@
                 android:id="@+id/serverMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/parallel"
+                android:text="Parallel"/>
     </LinearLayout>
 </layout>

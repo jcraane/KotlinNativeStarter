@@ -9,6 +9,7 @@ import com.soywiz.klock.DateTime
 //import com.soywiz.klock.format
 //import com.soywiz.klock.locale.dutch
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import nl.jamiecraane.nativestarter.api.Failure
@@ -58,6 +59,23 @@ class MainViewModel : ViewModel() {
 
         if (tasksResponse is Success) {
             tasks.value = tasksResponse.data
+        }
+    }
+
+    fun parallel() {
+        viewModelScope.launch {
+            val persons = async {
+                api.retrievePersons()
+            }
+            val tasks = async {api.retrieveTasks()}
+
+            val start = System.currentTimeMillis()
+            val r = persons.await()
+            println()
+            val t = tasks.await()
+            println(t)
+            val end = System.currentTimeMillis()
+            println("Parallel time = ${end - start}")
         }
     }
 }

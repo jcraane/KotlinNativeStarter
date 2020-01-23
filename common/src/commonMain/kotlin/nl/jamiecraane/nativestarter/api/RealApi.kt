@@ -15,25 +15,22 @@ import io.ktor.http.Url
 import io.ktor.http.isSuccess
 import kotlinx.io.charsets.Charset
 import kotlinx.serialization.list
-import nl.jamiecraane.nativestarter.domain.Message
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
-import nl.jamiecraane.nativestarter.log.log
 
+//Mockoon does not have good response times at the moment, see: https://github.com/mockoon/mockoon/issues/48
 class RealApi : Api {
-    private val client = HttpClient() {
-
-    }
-
+    private val client = HttpClient {  }
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
-        log("RETRIEVEPERSONS")
+        println("RETRIEVEPERSONS")
         return withinTryCatch<List<Person>> {
-            val datetime = DateTime(2019, 6, 3)
-            println("DATETIME = $datetime")
-
+            val start = DateTime.nowUnixLong()
             val response = client.get<HttpResponse> {
-                url(Url("http://192.168.1.241:2500/persons"))
+                url(Url("http://10.0.2.2:8080/persons"))
+//                url(Url("http://10.0.2.2:8888/persons.json"))
             }
+            val end = DateTime.nowUnixLong()
+            println("End persons service call = ${end - start}")
 
             if (response.status.isSuccess()) {
                 Success(
@@ -52,7 +49,8 @@ class RealApi : Api {
         println("RETRIEVE TASKS")
         return withinTryCatch<List<Task>> {
             val response = client.get<HttpResponse> {
-                url(Url("http://192.168.1.241:2500/tasks"))
+                url(Url("http://10.0.2.2:8080/tasks"))
+//                url(Url("http://10.0.2.2:8888/tasks.json"))
             }
 
             if (response.status.isSuccess()) {
