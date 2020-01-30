@@ -4,18 +4,19 @@ import common
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var persons: [Person] = []
     let cellIdentifier = "CellIdentifier"
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var myLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Persons"
-        
+    
+        myLabel.text = "Hello"
         let api = ApiWrapper()
         api.retrievePersons(success: { [weak self] (persons: [Person]) in
             print("Success, got \(persons)")
-            self?.persons.removeAll()
+            /*self?.persons.removeAll()
             self?.persons.append(contentsOf: persons)
-            self?.tableView.reloadData()
+            self?.tableView.reloadData()*/
         }, failure: { (throwable: KotlinThrowable?) in
             print("Error; \(throwable?.description() ?? "")")
         })
