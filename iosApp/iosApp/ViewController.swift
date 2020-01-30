@@ -10,7 +10,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         title = "Persons"
     
-        myLabel.text = "Hello"
+        myLabel.text = NSLocalizedString("button.ok", comment: "")
         let api = ApiWrapper()
         api.retrievePersons(success: { [weak self] (persons: [Person]) in
             print("Success, got \(persons)")
