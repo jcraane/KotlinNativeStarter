@@ -1,5 +1,7 @@
 import UIKit
 import common
+import SwiftyBeaver
+let log = SwiftyBeaver.self
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var persons: [Person] = []
@@ -12,6 +14,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
         myLabel.text = NSLocalizedString("button.ok", comment: "")
         let api = ApiWrapper()
+        
+        log.info("Retrieve persions here on iOS side")
         api.retrievePersons(success: { [weak self] (persons: [Person]) in
             print("Success, got \(persons)")
             /*self?.persons.removeAll()

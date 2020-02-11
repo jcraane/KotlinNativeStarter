@@ -5,6 +5,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        setupIntegrations()
         return true
     }
 
@@ -17,4 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {}
 
     func applicationWillTerminate(_ application: UIApplication) {}
+    
+    private func setupIntegrations() {
+//        Here we setup the integration between the logging in common and SwiftyBeaver
+        CommonLogging.initialize()
+    }
 }
