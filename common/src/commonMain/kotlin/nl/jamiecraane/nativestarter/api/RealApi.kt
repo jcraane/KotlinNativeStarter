@@ -1,10 +1,5 @@
 package nl.jamiecraane.nativestarter.api
 
-//import io.ktor.client.features.logging.LogLevel
-//import io.ktor.client.features.logging.Logger
-//import io.ktor.client.features.logging.Logging
-//import io.ktor.client.features.logging.SIMPLE
-//import com.soywiz.klock.DateTime
 import com.soywiz.klock.DateTime
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
@@ -18,17 +13,26 @@ import kotlinx.serialization.list
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
 import nl.jamiecraane.nativestarter.log.info
+import nl.jamiecraane.nativestarter.log.ktor.logging.LogLevel
+import nl.jamiecraane.nativestarter.log.ktor.logging.Logger
+import nl.jamiecraane.nativestarter.log.ktor.logging.Logging
+import nl.jamiecraane.nativestarter.log.ktor.logging.SIMPLE
 
 //Mockoon does not have good response times at the moment, see: https://github.com/mockoon/mockoon/issues/48
 class RealApi : Api {
-    private val client = HttpClient {  }
+    private val client = HttpClient {
+        install(Logging) {
+            logger = Logger.SIMPLE
+            level = LogLevel.ALL
+        }
+    }
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
         info("Retrieve persons from common")
         return withinTryCatch<List<Person>> {
             val start = DateTime.nowUnixLong()
             val response = client.get<HttpResponse> {
-//                url(Url("http://localhost:8080/persons"))
-                url(Url("http://10.0.2.2:8888/persons.json"))
+//                url(Url("http://localhost:2500/persons"))
+                url(Url("http://10.0.2.2:2500/persons"))
             }
             val end = DateTime.nowUnixLong()
             println("End persons service call = ${end - start}")
@@ -50,8 +54,8 @@ class RealApi : Api {
         info("Retrieve tasks from common")
         return withinTryCatch<List<Task>> {
             val response = client.get<HttpResponse> {
-//                url(Url("http://localhost:8080/tasks"))
-                url(Url("http://10.0.2.2:8888/tasks.json"))
+//                url(Url("http://localhost:2500/tasks"))
+                url(Url("http://10.0.2.2:2500/tasks"))
             }
 
             if (response.status.isSuccess()) {
