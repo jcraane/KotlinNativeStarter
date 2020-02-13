@@ -31,8 +31,8 @@ class RealApi : Api {
         return withinTryCatch<List<Person>> {
             val start = DateTime.nowUnixLong()
             val response = client.get<HttpResponse> {
-//                url(Url("http://localhost:2500/persons"))
-                url(Url("http://10.0.2.2:2500/persons"))
+                url(Url("http://localhost:2500/persons"))
+//                url(Url("http://10.0.2.2:2500/persons"))
             }
             val end = DateTime.nowUnixLong()
             println("End persons service call = ${end - start}")
@@ -54,8 +54,8 @@ class RealApi : Api {
         info("Retrieve tasks from common")
         return withinTryCatch<List<Task>> {
             val response = client.get<HttpResponse> {
-//                url(Url("http://localhost:2500/tasks"))
-                url(Url("http://10.0.2.2:2500/tasks"))
+                url(Url("http://localhost:2500/tasks"))
+//                url(Url("http://10.0.2.2:2500/tasks"))
             }
 
             if (response.status.isSuccess()) {
