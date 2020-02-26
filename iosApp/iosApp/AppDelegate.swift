@@ -1,5 +1,7 @@
 import UIKit
 
+import common
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
@@ -21,6 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupIntegrations() {
 //        Here we setup the integration between the logging in common and SwiftyBeaver
-        CommonLogging.initialize()
+        //Logging.initialize()
     }
 }

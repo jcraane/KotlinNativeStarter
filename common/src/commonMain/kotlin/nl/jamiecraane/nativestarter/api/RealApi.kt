@@ -38,12 +38,7 @@ class RealApi : Api {
             val end = DateTime.nowUnixLong()
             println("End persons service call = ${end - start}")
 
-        try {
-            val response = client.get<HttpResponse> {
-                url(Url("http://192.168.1.48:2500/persons"))
-            }
-
-            return if (response.status.isSuccess()) {
+            return@withinTryCatch if (response.status.isSuccess()) {
                 Success(
                     jsonParser.parse(
                         Person.serializer().list,
@@ -54,12 +49,24 @@ class RealApi : Api {
                 println("is Failure")
                 Failure(response.status.value, "Error")
             }
-        } catch (e: Throwable) {
-            println("is Exception!!!, $e")
-            return if (e.message?.contains("Code=-1009") == true) { //Is Network down, code..
-                Failure(-1009, "Error")
+        }
+    }
+
+    override suspend fun retrieveTasks(): ApiResponse<List<Task>> {
+        println("RETRIEVE TASKS")
+        return withinTryCatch<List<Task>> {
+            val response = client.get<HttpResponse> {
+                url(Url("http://192.168.1.241:2500/tasks"))
+            }
+            if (response.status.isSuccess()) {
+                Success(
+                    jsonParser.parse(
+                        Task.serializer().list,
+                        response.readText(Charset.forName("UTF-8"))
+                    )
+                )
             } else {
-                Failure(0, "Error") //Unknown failure
+                Failure(response.status.value, "Error")
             }
         }
     }
@@ -68,7 +75,11 @@ class RealApi : Api {
 suspend fun <T> withinTryCatch(block: suspend () -> ApiResponse<T>): ApiResponse<T> {
     try {
         return block()
-    } catch (exception: Exception) {
-        return Failure(500, exception.message)
+    } catch (exception: Throwable) {
+        return if (exception.message?.contains("Code=-1009") == true) { //Is Network down, code..
+            Failure(-1009, "Error")
+        } else {
+            Failure(500, exception.message) //Unknown failure
+        }
     }
 }

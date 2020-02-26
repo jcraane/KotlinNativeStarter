@@ -13,39 +13,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         title = "Persons"
     
         myLabel.text = NSLocalizedString("button.ok", comment: "")
-        let api = ApiWrapper()
-        
-        log.info("Retrieve persions here on iOS side")
-        api.retrievePersons(success: { [weak self] (persons: [Person]) in
-            print("Success, got \(persons)")
-            /*self?.persons.removeAll()
-            self?.persons.append(contentsOf: persons)
-            self?.tableView.reloadData()*/
-        }, failure: { (throwable: KotlinThrowable?) in
-            print("Error; \(throwable?.description() ?? "")")
-        })
-        
-        api.retrieveTasks(success: { [weak self] (tasks: [Task]) in
-            print("Success, got \(tasks)")
-            //self?.handle(persons: persons) Enable to demonstrate
-        }, failure: { (throwable: KotlinThrowable?) in
-            print("Error; \(throwable?.description() ?? "")")
-        let buttonText = NSLocalizedString("button", comment: "")
-        
         let api = IosApiWrapper()
+
+        log.info("Retrieve persions here on iOS side")
         api.retrievePersons(
             success: { [weak self] (persons: [Person]) in
                 print("Success, got \(persons)")
-                //self?.handle(persons: persons) Enable to demonstrate
+                /*self?.persons.removeAll()
+                self?.persons.append(contentsOf: persons)
+                self?.tableView.reloadData()*/
             },
-            failure: { (throwable: KotlinThrowable?, failure: Failure?) in
-                if failure?.status = -1009 {
+            failure: { (failure: Failure) in
+                if failure.status == Int32(-1009) {
                     print("Internet Offline")
                 } else {
-                    print("Error; \(throwable?.description() ?? "")")
+                    print("Error; \(failure.message ?? "")")
                 }
-                
-        })
+            })
+        
+        api.retrieveTasks(
+            success: { [weak self] (tasks: [Task]) in
+                print("Success, got \(tasks)")
+                //self?.handle(persons: persons) Enable to demonstrate
+            },
+            failure: { (failure: Failure) in
+                if failure.status == Int32(-1009) {
+                    print("Internet Offline")
+                } else {
+                    print("Error; \(failure.message ?? "")")
+                }
+            })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

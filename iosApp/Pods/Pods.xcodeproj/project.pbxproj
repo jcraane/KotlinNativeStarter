@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03BF07F2F8A6ED79D3FE8E00AF9DC066 /* FilterValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A3F835B7839C26A0813783BD4A6BEF /* FilterValidator.swift */; };
-		08FB87102540C9917F2B9818EC294B8A /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFAEFF0317633B47642EA871C1819D2 /* BaseDestination.swift */; };
+		03BF07F2F8A6ED79D3FE8E00AF9DC066 /* FilterValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23E5F556B69B3DAF6B2C943BA9E168 /* FilterValidator.swift */; };
+		08FB87102540C9917F2B9818EC294B8A /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C876B78B0E71B0C240694108C6022337 /* BaseDestination.swift */; };
 		0FFA22D06C3B1085C296BB9FCB9E26CA /* Pods-iosApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DC7F9924F99FEE67A9AD3BEE09A10C /* Pods-iosApp-dummy.m */; };
-		12C307CFA4BF58355D82DC2FEF3B7FEF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2F0A27B4B03972ED2520A79F14D3BA /* Extensions.swift */; };
-		3A332F19811B66B1BB332E6DA74378F9 /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF833FBE0C14DE0F23861D094B5CA49 /* ConsoleDestination.swift */; };
-		5D0F690D40F6666BF3E861DAD7F01ED6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64ED15B7EBA3053FBF676026904A7E /* Filter.swift */; };
-		60181ACAAEB45738C31824C8A2B217E0 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434573D81323DFA69BF0E1C08DB2A03 /* SwiftyBeaver.swift */; };
-		60982165A0AEF5C970AAA1D36DADB08E /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D821914D31B3B5E8C0659595C34C2 /* FileDestination.swift */; };
-		7B660FBBB1E5A8DFB0542D4CAF2FC877 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = D982D05C9A993119A2C12445911B142F /* Base64.swift */; };
-		A02237797E2C5888CE67F7F68B06F32B /* SwiftyBeaver-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 15FDB9D97E28F05C15037028EC62AE6E /* SwiftyBeaver-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A1B6695BF715AE769FB45DF6AFC196AE /* SwiftyBeaver-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C872A6A852A3184FF6CD98FF83E151A5 /* SwiftyBeaver-dummy.m */; };
+		12C307CFA4BF58355D82DC2FEF3B7FEF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AEDE9EA5B7DDC460DEAF6B239383AF /* Extensions.swift */; };
+		3A332F19811B66B1BB332E6DA74378F9 /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F261729B3DDC40883D48A9140E1A6E5 /* ConsoleDestination.swift */; };
+		5D0F690D40F6666BF3E861DAD7F01ED6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96374528891B31485010BBEC6DB6C5 /* Filter.swift */; };
+		60181ACAAEB45738C31824C8A2B217E0 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FD5470AB137162220D2A46B32EFFCE /* SwiftyBeaver.swift */; };
+		60982165A0AEF5C970AAA1D36DADB08E /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E90A3F105F3BF1046264416ED74242 /* FileDestination.swift */; };
+		7B660FBBB1E5A8DFB0542D4CAF2FC877 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C711E07E29A372827761D99BCCF61D4 /* Base64.swift */; };
+		A02237797E2C5888CE67F7F68B06F32B /* SwiftyBeaver-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 808A0F9EBEBD9A62ED7324AD68599221 /* SwiftyBeaver-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A1B6695BF715AE769FB45DF6AFC196AE /* SwiftyBeaver-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FB072DDE690D6B28D72657171C8642 /* SwiftyBeaver-dummy.m */; };
 		B5EEAB7F3F854DC7BFAD04328C3B34BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		BE65E4E713D0EAE19B3E490B200FEBD1 /* GoogleCloudDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B491FB34207E9E4BA39CA58CC74017A /* GoogleCloudDestination.swift */; };
-		C5883C150A7361A7E63DCBC743C71C1D /* SBPlatformDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB04878280EE73DCFE411961940484C /* SBPlatformDestination.swift */; };
+		BE65E4E713D0EAE19B3E490B200FEBD1 /* GoogleCloudDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B110DD76B80C0AB665851CEF61AB4F /* GoogleCloudDestination.swift */; };
+		C5883C150A7361A7E63DCBC743C71C1D /* SBPlatformDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D45E27972ABA4E8E08B47BE028B60F /* SBPlatformDestination.swift */; };
 		CDF7A07ECE0954A48891A7E36AAECB40 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		DCEFD2A2B6DCBF97ED1C223D0D2310B2 /* AES256CBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC29B48E18E1849D9CE8D20524A53F /* AES256CBC.swift */; };
+		DCEFD2A2B6DCBF97ED1C223D0D2310B2 /* AES256CBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2252D3FC57B67077B43563DBF93D8A /* AES256CBC.swift */; };
 		EEC800AFBBB01A7D19F4B10BFC4FD9E3 /* Pods-iosApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F87A626222A8D9B26448A9FEB04FD0DF /* Pods-iosApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -38,35 +38,34 @@
 
 /* Begin PBXFileReference section */
 		0187F135D5F61750CD24C3E04B6E8B64 /* Pods-iosApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iosApp-frameworks.sh"; sourceTree = "<group>"; };
-		15FDB9D97E28F05C15037028EC62AE6E /* SwiftyBeaver-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-umbrella.h"; sourceTree = "<group>"; };
-		1DFAEFF0317633B47642EA871C1819D2 /* BaseDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseDestination.swift; path = Sources/BaseDestination.swift; sourceTree = "<group>"; };
+		0C711E07E29A372827761D99BCCF61D4 /* Base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base64.swift; path = Sources/Base64.swift; sourceTree = "<group>"; };
+		10FD5470AB137162220D2A46B32EFFCE /* SwiftyBeaver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyBeaver.swift; path = Sources/SwiftyBeaver.swift; sourceTree = "<group>"; };
+		12D45E27972ABA4E8E08B47BE028B60F /* SBPlatformDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SBPlatformDestination.swift; path = Sources/SBPlatformDestination.swift; sourceTree = "<group>"; };
+		26E90A3F105F3BF1046264416ED74242 /* FileDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileDestination.swift; path = Sources/FileDestination.swift; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		3E2F0A27B4B03972ED2520A79F14D3BA /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Sources/Extensions.swift; sourceTree = "<group>"; };
+		338B71A228561CF24AF6F4388F07E031 /* SwiftyBeaver.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyBeaver.modulemap; sourceTree = "<group>"; };
+		3D96374528891B31485010BBEC6DB6C5 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Filter.swift; sourceTree = "<group>"; };
 		3F64BADB16C311E9D09DAD0116F684F4 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
-		42AC29B48E18E1849D9CE8D20524A53F /* AES256CBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AES256CBC.swift; path = Sources/AES256CBC.swift; sourceTree = "<group>"; };
 		54DC7F9924F99FEE67A9AD3BEE09A10C /* Pods-iosApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iosApp-dummy.m"; sourceTree = "<group>"; };
+		55FB072DDE690D6B28D72657171C8642 /* SwiftyBeaver-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyBeaver-dummy.m"; sourceTree = "<group>"; };
+		58B110DD76B80C0AB665851CEF61AB4F /* GoogleCloudDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GoogleCloudDestination.swift; path = Sources/GoogleCloudDestination.swift; sourceTree = "<group>"; };
 		5AC974169B09D4545F741E9A2147610E /* Pods-iosApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iosApp-Info.plist"; sourceTree = "<group>"; };
-		5EB04878280EE73DCFE411961940484C /* SBPlatformDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SBPlatformDestination.swift; path = Sources/SBPlatformDestination.swift; sourceTree = "<group>"; };
-		6336805085E2503F54AF560BF9BF0FAA /* SwiftyBeaver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyBeaver.release.xcconfig; sourceTree = "<group>"; };
-		77A3F835B7839C26A0813783BD4A6BEF /* FilterValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FilterValidator.swift; path = Sources/FilterValidator.swift; sourceTree = "<group>"; };
+		6D2252D3FC57B67077B43563DBF93D8A /* AES256CBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AES256CBC.swift; path = Sources/AES256CBC.swift; sourceTree = "<group>"; };
+		6F261729B3DDC40883D48A9140E1A6E5 /* ConsoleDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsoleDestination.swift; path = Sources/ConsoleDestination.swift; sourceTree = "<group>"; };
 		7A5F7001277980B8F3EEA75BCD346E53 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyBeaver.framework; path = SwiftyBeaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B129B9CA4051B7016C420D63DC6263A /* SwiftyBeaver-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyBeaver-Info.plist"; sourceTree = "<group>"; };
-		8B491FB34207E9E4BA39CA58CC74017A /* GoogleCloudDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GoogleCloudDestination.swift; path = Sources/GoogleCloudDestination.swift; sourceTree = "<group>"; };
+		808A0F9EBEBD9A62ED7324AD68599221 /* SwiftyBeaver-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-umbrella.h"; sourceTree = "<group>"; };
 		8B524AABE529FB8A2D151B05321336E0 /* Pods-iosApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iosApp.modulemap"; sourceTree = "<group>"; };
-		9434573D81323DFA69BF0E1C08DB2A03 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyBeaver.swift; path = Sources/SwiftyBeaver.swift; sourceTree = "<group>"; };
 		9BB0B8B698D4C35D4F9A07EF70910170 /* Pods-iosApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iosApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F1FFC8B10F4D7D4F37606E8959B3F29 /* Pods-iosApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iosApp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9FECCB5AFF87D121F15BA01E683C7932 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
-		9FF833FBE0C14DE0F23861D094B5CA49 /* ConsoleDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsoleDestination.swift; path = Sources/ConsoleDestination.swift; sourceTree = "<group>"; };
-		A14DDE8EBBFEC2197C6737B94D0AA026 /* SwiftyBeaver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyBeaver.debug.xcconfig; sourceTree = "<group>"; };
-		A73D821914D31B3B5E8C0659595C34C2 /* FileDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileDestination.swift; path = Sources/FileDestination.swift; sourceTree = "<group>"; };
-		A9B9867BF6A7035DFC5AC5697E7113E3 /* SwiftyBeaver-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-prefix.pch"; sourceTree = "<group>"; };
+		A0AA1454029BDF4727B4B8351A2DE6AA /* SwiftyBeaver-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-prefix.pch"; sourceTree = "<group>"; };
 		B097DD7534E741D5C41838011D755842 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_iosApp.framework; path = "Pods-iosApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C872A6A852A3184FF6CD98FF83E151A5 /* SwiftyBeaver-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyBeaver-dummy.m"; sourceTree = "<group>"; };
-		CC64ED15B7EBA3053FBF676026904A7E /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Filter.swift; sourceTree = "<group>"; };
-		D982D05C9A993119A2C12445911B142F /* Base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base64.swift; path = Sources/Base64.swift; sourceTree = "<group>"; };
-		EE5B25D4739D193385DB5844782FD733 /* SwiftyBeaver.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyBeaver.modulemap; sourceTree = "<group>"; };
+		B2AEDE9EA5B7DDC460DEAF6B239383AF /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Sources/Extensions.swift; sourceTree = "<group>"; };
+		BC23E5F556B69B3DAF6B2C943BA9E168 /* FilterValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FilterValidator.swift; path = Sources/FilterValidator.swift; sourceTree = "<group>"; };
+		C876B78B0E71B0C240694108C6022337 /* BaseDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseDestination.swift; path = Sources/BaseDestination.swift; sourceTree = "<group>"; };
+		D9797073822AAD28A4EA6525C5F69FD1 /* SwiftyBeaver-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyBeaver-Info.plist"; sourceTree = "<group>"; };
+		DB51B643B93CA2CF8B6670F916B1B80F /* SwiftyBeaver.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyBeaver.xcconfig; sourceTree = "<group>"; };
 		F87A626222A8D9B26448A9FEB04FD0DF /* Pods-iosApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iosApp-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,19 +97,24 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		4282CBDB41224EE35F125BEC26B6BA00 /* Support Files */ = {
+		25D9C4D014F185DF090F09A63FEBA10B /* SwiftyBeaver */ = {
 			isa = PBXGroup;
 			children = (
-				EE5B25D4739D193385DB5844782FD733 /* SwiftyBeaver.modulemap */,
-				C872A6A852A3184FF6CD98FF83E151A5 /* SwiftyBeaver-dummy.m */,
-				8B129B9CA4051B7016C420D63DC6263A /* SwiftyBeaver-Info.plist */,
-				A9B9867BF6A7035DFC5AC5697E7113E3 /* SwiftyBeaver-prefix.pch */,
-				15FDB9D97E28F05C15037028EC62AE6E /* SwiftyBeaver-umbrella.h */,
-				A14DDE8EBBFEC2197C6737B94D0AA026 /* SwiftyBeaver.debug.xcconfig */,
-				6336805085E2503F54AF560BF9BF0FAA /* SwiftyBeaver.release.xcconfig */,
+				6D2252D3FC57B67077B43563DBF93D8A /* AES256CBC.swift */,
+				0C711E07E29A372827761D99BCCF61D4 /* Base64.swift */,
+				C876B78B0E71B0C240694108C6022337 /* BaseDestination.swift */,
+				6F261729B3DDC40883D48A9140E1A6E5 /* ConsoleDestination.swift */,
+				B2AEDE9EA5B7DDC460DEAF6B239383AF /* Extensions.swift */,
+				26E90A3F105F3BF1046264416ED74242 /* FileDestination.swift */,
+				3D96374528891B31485010BBEC6DB6C5 /* Filter.swift */,
+				BC23E5F556B69B3DAF6B2C943BA9E168 /* FilterValidator.swift */,
+				58B110DD76B80C0AB665851CEF61AB4F /* GoogleCloudDestination.swift */,
+				12D45E27972ABA4E8E08B47BE028B60F /* SBPlatformDestination.swift */,
+				10FD5470AB137162220D2A46B32EFFCE /* SwiftyBeaver.swift */,
+				D3A5AE0198292E83B3077461ED20C935 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftyBeaver";
+			name = SwiftyBeaver;
+			path = SwiftyBeaver;
 			sourceTree = "<group>";
 		};
 		52A898E555C2DBD7D25A7E44754C3FC6 /* Pods-iosApp */ = {
@@ -139,26 +143,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A8D03095BFEA8C27F89848B9E8B4385F /* SwiftyBeaver */ = {
-			isa = PBXGroup;
-			children = (
-				42AC29B48E18E1849D9CE8D20524A53F /* AES256CBC.swift */,
-				D982D05C9A993119A2C12445911B142F /* Base64.swift */,
-				1DFAEFF0317633B47642EA871C1819D2 /* BaseDestination.swift */,
-				9FF833FBE0C14DE0F23861D094B5CA49 /* ConsoleDestination.swift */,
-				3E2F0A27B4B03972ED2520A79F14D3BA /* Extensions.swift */,
-				A73D821914D31B3B5E8C0659595C34C2 /* FileDestination.swift */,
-				CC64ED15B7EBA3053FBF676026904A7E /* Filter.swift */,
-				77A3F835B7839C26A0813783BD4A6BEF /* FilterValidator.swift */,
-				8B491FB34207E9E4BA39CA58CC74017A /* GoogleCloudDestination.swift */,
-				5EB04878280EE73DCFE411961940484C /* SBPlatformDestination.swift */,
-				9434573D81323DFA69BF0E1C08DB2A03 /* SwiftyBeaver.swift */,
-				4282CBDB41224EE35F125BEC26B6BA00 /* Support Files */,
-			);
-			name = SwiftyBeaver;
-			path = SwiftyBeaver;
-			sourceTree = "<group>";
-		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +165,7 @@
 		CF94ED953BB548C8547288A67F0A9245 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A8D03095BFEA8C27F89848B9E8B4385F /* SwiftyBeaver */,
+				25D9C4D014F185DF090F09A63FEBA10B /* SwiftyBeaver */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -192,6 +176,20 @@
 				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3A5AE0198292E83B3077461ED20C935 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				338B71A228561CF24AF6F4388F07E031 /* SwiftyBeaver.modulemap */,
+				DB51B643B93CA2CF8B6670F916B1B80F /* SwiftyBeaver.xcconfig */,
+				55FB072DDE690D6B28D72657171C8642 /* SwiftyBeaver-dummy.m */,
+				D9797073822AAD28A4EA6525C5F69FD1 /* SwiftyBeaver-Info.plist */,
+				A0AA1454029BDF4727B4B8351A2DE6AA /* SwiftyBeaver-prefix.pch */,
+				808A0F9EBEBD9A62ED7324AD68599221 /* SwiftyBeaver-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyBeaver";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,9 +473,9 @@
 			};
 			name = Release;
 		};
-		7A339927CDA96C161B69FFDCE1CDF565 /* Release */ = {
+		5C6F131F0CFFA4C1FDB52095FD398042 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6336805085E2503F54AF560BF9BF0FAA /* SwiftyBeaver.release.xcconfig */;
+			baseConfigurationReference = DB51B643B93CA2CF8B6670F916B1B80F /* SwiftyBeaver.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -511,9 +509,9 @@
 			};
 			name = Release;
 		};
-		99DC3FF3251D5BA406E206E159600D88 /* Debug */ = {
+		6FC135F9F63F48FD9FBF127DA8B42B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A14DDE8EBBFEC2197C6737B94D0AA026 /* SwiftyBeaver.debug.xcconfig */;
+			baseConfigurationReference = DB51B643B93CA2CF8B6670F916B1B80F /* SwiftyBeaver.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -625,8 +623,8 @@
 		2C6B51E34A0129A0E1C6878ABDC01FAB /* Build configuration list for PBXNativeTarget "SwiftyBeaver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				99DC3FF3251D5BA406E206E159600D88 /* Debug */,
-				7A339927CDA96C161B69FFDCE1CDF565 /* Release */,
+				6FC135F9F63F48FD9FBF127DA8B42B70 /* Debug */,
+				5C6F131F0CFFA4C1FDB52095FD398042 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
