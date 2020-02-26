@@ -2,6 +2,7 @@ package nl.jamiecraane.nativestarter.api
 
 import com.soywiz.klock.DateTime
 import io.ktor.client.HttpClient
+import io.ktor.client.features.ClientRequestException
 import io.ktor.client.request.get
 import io.ktor.client.request.url
 import io.ktor.client.response.HttpResponse
@@ -37,7 +38,12 @@ class RealApi : Api {
             val end = DateTime.nowUnixLong()
             println("End persons service call = ${end - start}")
 
-            if (response.status.isSuccess()) {
+        try {
+            val response = client.get<HttpResponse> {
+                url(Url("http://192.168.1.48:2500/persons"))
+            }
+
+            return if (response.status.isSuccess()) {
                 Success(
                     jsonParser.parse(
                         Person.serializer().list,
@@ -45,28 +51,15 @@ class RealApi : Api {
                     )
                 )
             } else {
+                println("is Failure")
                 Failure(response.status.value, "Error")
             }
-        }
-    }
-
-    override suspend fun retrieveTasks(): ApiResponse<List<Task>> {
-        info("Retrieve tasks from common")
-        return withinTryCatch<List<Task>> {
-            val response = client.get<HttpResponse> {
-                url(Url("http://localhost:2500/tasks"))
-//                url(Url("http://10.0.2.2:2500/tasks"))
-            }
-
-            if (response.status.isSuccess()) {
-                Success(
-                    jsonParser.parse(
-                        Task.serializer().list,
-                        response.readText(Charset.forName("UTF-8"))
-                    )
-                )
+        } catch (e: Throwable) {
+            println("is Exception!!!, $e")
+            return if (e.message?.contains("Code=-1009") == true) { //Is Network down, code..
+                Failure(-1009, "Error")
             } else {
-                Failure(response.status.value, "Error")
+                Failure(0, "Error") //Unknown failure
             }
         }
     }

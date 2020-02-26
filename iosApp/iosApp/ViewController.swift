@@ -30,6 +30,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             //self?.handle(persons: persons) Enable to demonstrate
         }, failure: { (throwable: KotlinThrowable?) in
             print("Error; \(throwable?.description() ?? "")")
+        let buttonText = NSLocalizedString("button", comment: "")
+        
+        let api = IosApiWrapper()
+        api.retrievePersons(
+            success: { [weak self] (persons: [Person]) in
+                print("Success, got \(persons)")
+                //self?.handle(persons: persons) Enable to demonstrate
+            },
+            failure: { (throwable: KotlinThrowable?, failure: Failure?) in
+                if failure?.status = -1009 {
+                    print("Internet Offline")
+                } else {
+                    print("Error; \(throwable?.description() ?? "")")
+                }
+                
         })
     }
     
