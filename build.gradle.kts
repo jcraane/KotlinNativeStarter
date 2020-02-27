@@ -22,3 +22,10 @@ allprojects {
         maven { url = URI.create("https://dl.bintray.com/korlibs/korlibs") }
     }
 }
+
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
