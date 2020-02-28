@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         myLabel.text = NSLocalizedString("button.ok", comment: "")
         let api = IosApiWrapper()
 
-        log.info("Retrieve persions here on iOS side")
+        print("Retrieve persons here on iOS side")
         api.retrievePersons(
             success: { [weak self] (persons: [Person]) in
                 print("Success, got \(persons)")
@@ -24,19 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self?.tableView.reloadData()*/
             },
             failure: { (failure: Failure) in
-                if failure.status == Int32(-1009) {
-                    print("Internet Offline")
-                } else {
-                    print("Error; \(failure.message ?? "")")
-                }
-            })
-        
-        api.retrieveTasks(
-            success: { [weak self] (tasks: [Task]) in
-                print("Success, got \(tasks)")
-                //self?.handle(persons: persons) Enable to demonstrate
-            },
-            failure: { (failure: Failure) in
+                print("Failure in calling retrievePersons")
                 if failure.status == Int32(-1009) {
                     print("Internet Offline")
                 } else {

@@ -2,7 +2,6 @@ package nl.jamiecraane.nativestarter.api
 
 import com.soywiz.klock.DateTime
 import io.ktor.client.HttpClient
-import io.ktor.client.features.ClientRequestException
 import io.ktor.client.request.get
 import io.ktor.client.request.url
 import io.ktor.client.response.HttpResponse
