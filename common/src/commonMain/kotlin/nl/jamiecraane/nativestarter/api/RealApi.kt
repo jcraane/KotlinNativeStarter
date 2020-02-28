@@ -31,13 +31,13 @@ class RealApi : Api {
         return withinTryCatch<List<Person>> {
             val start = DateTime.nowUnixLong()
             val response = client.get<HttpResponse> {
-                url(Url("http://localhost:2500/persons"))
+                url(Url("https://www.test.nl/persons"))
 //                url(Url("http://10.0.2.2:2500/persons"))
             }
             val end = DateTime.nowUnixLong()
             println("End persons service call = ${end - start}")
 
-            return@withinTryCatch if (response.status.isSuccess()) {
+            if (response.status.isSuccess()) {
                 Success(
                     jsonParser.parse(
                         Person.serializer().list,

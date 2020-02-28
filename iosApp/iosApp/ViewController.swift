@@ -19,16 +19,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         api.retrievePersons(
             success: { [weak self] (persons: [Person]) in
                 print("Success, got \(persons)")
-                /*self?.persons.removeAll()
-                self?.persons.append(contentsOf: persons)
-                self?.tableView.reloadData()*/
             },
             failure: { (failure: Failure) in
-                print("Failure in calling retrievePersons")
-                if failure.status == Int32(-1009) {
+                print("Failure in calling retrievePersons: \(failure.status)")
+                if (failure.status == Int32(-1009) || failure.status == Int32(-1004)) {
                     print("Internet Offline")
                 } else {
-                    print("Error; \(failure.message ?? "")")
+                    print("Error: \(failure.message ?? "")")
                 }
             })
     }
