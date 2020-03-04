@@ -21,6 +21,7 @@ class IosApiWrapper {
     }
 
     fun retrieveTasks(success: (List<Task>) -> Unit, failure: (Failure<List<Task>>) -> Unit) {
+        println("Test")
         GlobalScope.launch(ApplicationDispatcher) {
             val response = RealApi().retrieveTasks()
             if (response is Success) {
