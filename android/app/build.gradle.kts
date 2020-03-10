@@ -6,7 +6,7 @@ plugins {
 }
 
 val lifeCycleVersion = "2.1.0-alpha03"
-val coroutinesVersion = "1.2.1"
+val coroutinesVersion = "1.3.4"
 val koinVersion = "1.0.2"
 
 android {

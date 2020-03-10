@@ -6,22 +6,22 @@ import io.ktor.client.features.observer.ResponseHandler
 import io.ktor.client.features.observer.ResponseObserver
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.HttpSendPipeline
-import io.ktor.client.response.HttpResponse
+import io.ktor.client.statement.HttpResponse
 import io.ktor.http.ContentType
 import io.ktor.http.charset
 import io.ktor.http.content.OutgoingContent
 import io.ktor.http.contentType
 import io.ktor.util.AttributeKey
+import io.ktor.utils.io.ByteChannel
+import io.ktor.utils.io.ByteReadChannel
+import io.ktor.utils.io.charsets.Charset
+import io.ktor.utils.io.charsets.Charsets
+import io.ktor.utils.io.close
+import io.ktor.utils.io.core.String
+import io.ktor.utils.io.core.readText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.io.ByteChannel
-import kotlinx.coroutines.io.ByteReadChannel
-import kotlinx.coroutines.io.close
-import kotlinx.coroutines.io.discard
 import kotlinx.coroutines.launch
-import kotlinx.io.charsets.Charset
-import kotlinx.io.charsets.Charsets
-import kotlinx.io.core.readText
 import nl.jamiecraane.nativestarter.log.info
 
 
@@ -58,7 +58,7 @@ class Logging(
 
     private suspend fun logResponse(response: HttpResponse) {
         if (level == LogLevel.NONE) {
-            response.content.discard()
+            response.content.discard(Long.MAX_VALUE)
             return
         }
 
@@ -71,7 +71,7 @@ class Logging(
         if (level.body) {
             logResponseBody(response.contentType(), response.content)
         } else {
-            response.content.discard()
+            response.content.discard(Long.MAX_VALUE)
         }
         info("_______ end ________")
     }
@@ -114,7 +114,7 @@ class Logging(
                 is OutgoingContent.ReadChannelContent -> {
                     content.readFrom().readText(charset)
                 }
-                is OutgoingContent.ByteArrayContent -> kotlinx.io.core.String(
+                is OutgoingContent.ByteArrayContent -> String(
                     content.bytes(),
                     charset = charset
                 )
