@@ -4,11 +4,12 @@ import com.soywiz.klock.DateTime
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.url
-import io.ktor.client.response.HttpResponse
 import io.ktor.client.response.readText
+import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.readText
 import io.ktor.http.Url
 import io.ktor.http.isSuccess
-import kotlinx.io.charsets.Charset
+import io.ktor.utils.io.charsets.Charset
 import kotlinx.serialization.list
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
@@ -27,12 +28,13 @@ class RealApi : Api {
         }
     }
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
-        info("Retrieve persons from common")
+        println("Persons from common3")
         return withinTryCatch<List<Person>> {
             val start = DateTime.nowUnixLong()
             val response = client.get<HttpResponse> {
-                url(Url("https://www.test.nl/persons"))
+//                url(Url("https://www.test.nl/persons"))
 //                url(Url("http://10.0.2.2:2500/persons"))
+                url(Url("http://localhost:2500/persons"))
             }
             val end = DateTime.nowUnixLong()
             println("End persons service call = ${end - start}")
