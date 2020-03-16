@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 
-val ktor_version = "1.3.1"
+val ktor_version = "1.3.2"
 val kotlin_serialization = "0.20.0"
 val klockVersion = "1.9.1"
 

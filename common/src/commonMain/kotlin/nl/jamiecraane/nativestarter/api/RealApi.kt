@@ -30,12 +30,13 @@ class RealApi : Api {
         }
     }
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
-        info("Retrieve persons from common")
+        println("PERSONS FROM COMMON")
         return withinTryCatch<List<Person>> {
             val start = DateTime.nowUnixLong()
             val response = client.get<HttpResponse> {
 //                url(Url("https://www.test.nl/persons"))
-                url(Url("http://10.0.2.2:2500/persons"))
+//                url(Url("http://10.0.2.2:2500/persons"))
+                url(Url("http://localhost:2500/persons"))
             }
             val end = DateTime.nowUnixLong()
             println("End persons service call = ${end - start}")
@@ -55,7 +56,7 @@ class RealApi : Api {
     }
 
     override suspend fun retrieveTasks(): ApiResponse<List<Task>> {
-        println("RETRIEVE TASKS2")
+        println("RETRIEVE TASKS")
         return withinTryCatch<List<Task>> {
             val response = client.get<HttpResponse> {
                 url(Url("http://192.168.1.241:2500/tasks"))
