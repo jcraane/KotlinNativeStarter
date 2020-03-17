@@ -6,7 +6,7 @@ plugins {
 }
 
 val lifeCycleVersion = "2.1.0-alpha03"
-val coroutinesVersion = "1.2.1"
+val coroutinesVersion = "1.3.4"
 val koinVersion = "1.0.2"
 
 android {
@@ -45,7 +45,7 @@ android {
 dependencies {
     implementation(project(":common"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.70")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("com.jakewharton.timber:timber:4.7.1")

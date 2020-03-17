@@ -6,23 +6,23 @@ import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.3.61")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.3.70")
     }
 }
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("kotlinx-serialization") version "1.3.50"
+    id("kotlinx-serialization") version "1.3.70"
 }
 
 repositories {
     mavenCentral()
 }
 
-val ktor_version = "1.3.1"
-val kotlin_serialization = "0.14.0"
-val klockVersion = "1.8.0"
+val ktor_version = "1.3.2"
+val kotlin_serialization = "0.20.0"
+val klockVersion = "1.9.1"
 
 android {
     compileSdkVersion(29)
@@ -45,9 +45,9 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.70")
     implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.core:core-ktx:1.1.0")
+    implementation("androidx.core:core-ktx:1.2.0")
     implementation("io.ktor:ktor-client-okhttp:$ktor_version")
     implementation("com.jakewharton.timber:timber:4.7.1")
     testImplementation("junit:junit:4.12")
