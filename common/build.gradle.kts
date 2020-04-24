@@ -58,6 +58,7 @@ dependencies {
 val frameworkName = "common"
 kotlin {
     android {}
+    jvm()
 
     //    one or combination of: armv7 arm64 x86_64
     val supportedTargets = ((project.findProperty("kotlin.target") ?: "x86_64") as String).split(" ")
@@ -119,6 +120,13 @@ kotlin {
         implementation("io.ktor:ktor-client-android:$ktor_version")
         implementation("io.ktor:ktor-client-json-jvm:$ktor_version")
         implementation("io.ktor:ktor-client-logging-jvm:$ktor_version")
+        api("com.soywiz.korlibs.klock:klock-jvm:$klockVersion")
+    }
+    sourceSets["jvmMain"].dependencies {
+        implementation(kotlin("stdlib"))
+        api("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialization")
+        implementation("io.ktor:ktor-client-core-jvm:$ktor_version")
+        implementation("io.ktor:ktor-client-cio:$ktor_version")
         api("com.soywiz.korlibs.klock:klock-jvm:$klockVersion")
     }
     sourceSets["androidTest"].dependencies {

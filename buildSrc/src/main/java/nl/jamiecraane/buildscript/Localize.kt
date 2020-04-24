@@ -1,14 +1,16 @@
 package nl.jamiecraane.buildscript
 
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.*
 import java.io.File
 
 /**
  * Gradle task which calls the localize function for all *.csv files and places the outputDirName.
  */
 open class Localize : DefaultTask() {
+    @OutputDirectory
     lateinit var outputFolder: File
+    @InputFiles
     lateinit var repoLocation: File
 
     @TaskAction
