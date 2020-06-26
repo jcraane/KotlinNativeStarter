@@ -4,10 +4,13 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url = uri("https://dl.bintray.com/kotlin/kotlin-eap")
+        }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:4.2.0-alpha02")
-        classpath(kotlin("gradle-plugin", version = "1.3.72"))
+        classpath(kotlin("gradle-plugin", version = "1.4-M2"))
     }
 }
 
@@ -18,9 +21,9 @@ allprojects {
         maven {
             url = URI.create("https://dl.bintray.com/kotlin/ktor")
         }
-        maven { url = URI.create("https://kotlin.bintray.com/kotlinx") }
-        maven { url = URI.create("https://dl.bintray.com/korlibs/korlibs") }
-        maven { url = URI.create("https://dl.bintray.com/kotlin/kotlin-eap") }
+        maven { url = uri("https://kotlin.bintray.com/kotlinx") }
+        maven { url = uri("https://dl.bintray.com/korlibs/korlibs") }
+        maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
     }
 }
 
