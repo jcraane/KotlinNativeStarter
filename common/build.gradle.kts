@@ -6,22 +6,24 @@ import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.3.72")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4-M2")
     }
 }
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("kotlinx-serialization") version "1.3.72"
+    id("kotlinx-serialization") version "1.4-M2"
 }
 
 repositories {
     mavenCentral()
 }
 
-val ktor_version = "1.3.2"
-val kotlin_serialization = "0.20.0"
+//val ktor_version = "1.3.2"
+val ktor_version = "1.3.2-1.4-M1-2"
+//val kotlin_serialization = "0.20.0"
+val kotlin_serialization = "0.20.0-1.4-M2"
 val klockVersion = "1.9.1"
 
 android {
@@ -45,7 +47,7 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.core:core-ktx:1.2.0")
     implementation("io.ktor:ktor-client-okhttp:$ktor_version")
@@ -107,7 +109,7 @@ kotlin {
         implementation("io.ktor:ktor-client-core:$ktor_version")
         implementation("io.ktor:ktor-client-logging:$ktor_version")
         implementation("io.ktor:ktor-client-json:$ktor_version")
-        implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialization")
+//        implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialization")
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialization")
         implementation("com.soywiz.korlibs.klock:klock:$klockVersion")
     }
@@ -136,17 +138,17 @@ kotlin {
     sourceSets["ios32Main"].dependencies {
         implementation("com.soywiz.korlibs.klock:klock-iosarm32:$klockVersion")
         implementation("io.ktor:ktor-client-ios-iosarm32:$ktor_version")
-        api("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization")
+//        api("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization")
     }
     sourceSets["ios64Main"].dependencies {
         implementation("com.soywiz.korlibs.klock:klock-iosarm64:$klockVersion")
         implementation("io.ktor:ktor-client-ios-iosarm64:$ktor_version")
-        api("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization")
+//        api("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization")
     }
     sourceSets["iosX64Main"].dependencies {
         implementation("com.soywiz.korlibs.klock:klock-iosx64:$klockVersion")
         implementation("io.ktor:ktor-client-ios-iosx64:$ktor_version")
-        api("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization")
+//        api("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization")
     }
 }
 
