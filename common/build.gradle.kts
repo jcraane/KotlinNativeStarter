@@ -21,7 +21,7 @@ repositories {
 }
 
 //val ktor_version = "1.3.2"
-val ktor_version = "1.3.2-1.4-M1-2"
+val ktor_version = "1.3.2-1.4-M2"
 //val kotlin_serialization = "0.20.0"
 val kotlin_serialization = "0.20.0-1.4-M2"
 val klockVersion = "1.9.1"
