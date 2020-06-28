@@ -24,7 +24,8 @@ repositories {
 val ktor_version = "1.3.2-1.4-M2"
 //val kotlin_serialization = "0.20.0"
 val kotlin_serialization = "0.20.0-1.4-M2"
-val klockVersion = "1.9.1"
+//val klockVersion = "1.9.1"
+val klockVersion = "2.0.0-alpha-2"
 
 android {
     compileSdkVersion(29)
