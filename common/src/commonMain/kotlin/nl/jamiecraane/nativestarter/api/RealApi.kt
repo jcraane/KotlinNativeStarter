@@ -28,7 +28,7 @@ class RealApi : Api {
         }
     }
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
-        println("Persons from common3")
+        println("Persons from common2")
         return withinTryCatch<List<Person>> {
             val start = DateTime.nowUnixLong()
             val response = client.get<HttpResponse> {
