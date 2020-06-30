@@ -10,6 +10,7 @@ import com.soywiz.klock.DateTime
 //import com.soywiz.klock.locale.dutch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import nl.jamiecraane.nativestarter.api.Failure
@@ -17,6 +18,7 @@ import nl.jamiecraane.nativestarter.api.RealApi
 import nl.jamiecraane.nativestarter.api.Success
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
+import nl.jamiecraane.nativestarter.viewmodel.PersonsViewModel
 
 class MainViewModel : ViewModel() {
     private val api = RealApi()
@@ -27,10 +29,14 @@ class MainViewModel : ViewModel() {
     val errorText = MutableLiveData("")
     val currentTime = MutableLiveData<String>()
 
+    private val personsViewModel = PersonsViewModel()
+
     init {
-//        todo test retrieve async
         viewModelScope.launch {
-            retrievePersons()
+            personsViewModel.persons
+                .collect {
+                    persons.value = it
+                }
             retrieveTasks()
         }
 
