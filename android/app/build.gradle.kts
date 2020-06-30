@@ -25,6 +25,13 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    buildTypes {
+        getByName("debug") {
+            isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
+            isShrinkResources = false
+        }
+    }
     dataBinding {
         isEnabled = true
     }
