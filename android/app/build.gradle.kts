@@ -49,6 +49,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
 //    implementation("\"org.jetbrains.kotlin:kotlin-stdlib:1.4-M2")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
+    implementation("com.google.code.gson:gson:2.8.5")
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("com.jakewharton.timber:timber:4.7.1")
     implementation("androidx.lifecycle:lifecycle-extensions:$lifeCycleVersion")
