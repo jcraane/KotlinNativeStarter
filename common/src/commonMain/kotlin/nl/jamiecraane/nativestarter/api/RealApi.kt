@@ -10,7 +10,9 @@ import io.ktor.client.statement.readText
 import io.ktor.http.Url
 import io.ktor.http.isSuccess
 import io.ktor.utils.io.charsets.Charset
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.list
+import kotlinx.serialization.parse
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
 import nl.jamiecraane.nativestarter.log.info
@@ -33,16 +35,16 @@ class RealApi : Api {
             val start = DateTime.nowUnixLong()
             val response = client.get<HttpResponse> {
 //                url(Url("https://www.test.nl/persons"))
-//                url(Url("http://10.0.2.2:2500/persons"))
-                url(Url("http://localhost:2500/persons"))
+                url(Url("http://10.0.2.2:2500/persons"))
+//                url(Url("http://localhost:2500/persons"))
             }
             val end = DateTime.nowUnixLong()
             println("End persons service call = ${end - start}")
 
             if (response.status.isSuccess()) {
                 Success(
-                    jsonParser.parse(
-                        Person.serializer().list,
+                    jsonParser.decodeFromString(
+                        ListSerializer(Person.serializer()),
                         response.readText(Charset.forName("UTF-8"))
                     )
                 )
@@ -61,8 +63,8 @@ class RealApi : Api {
             }
             if (response.status.isSuccess()) {
                 Success(
-                    jsonParser.parse(
-                        Task.serializer().list,
+                    jsonParser.decodeFromString(
+                        ListSerializer(Task.serializer()),
                         response.readText(Charset.forName("UTF-8"))
                     )
                 )
