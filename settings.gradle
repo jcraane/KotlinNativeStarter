@@ -20,4 +20,5 @@ enableFeaturePreview("GRADLE_METADATA")
 rootProject.name = 'KotlinNativeStarter'
 // This is needed to compile the IOS dependency of the framework (else dependencies are not resolved).
 
-include ':common', ':android', ':android:app', ':jvmmodule'
+//include ':common', ':android', ':android:app', ':jvmmodule'
+include ':common', ':android', ':android:app'

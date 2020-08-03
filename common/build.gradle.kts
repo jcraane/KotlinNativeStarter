@@ -6,26 +6,23 @@ import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4-M2")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4.0-rc")
     }
 }
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("kotlinx-serialization") version "1.4-M2"
+    id("kotlinx-serialization") version "1.4.0-rc"
 }
 
 repositories {
     mavenCentral()
 }
 
-//val ktor_version = "1.3.2"
-val ktor_version = "1.3.2-1.4-M2"
-//val kotlin_serialization = "0.20.0"
-val kotlin_serialization = "0.20.0-1.4-M2"
-//val klockVersion = "1.9.1"
-val klockVersion = "2.0.0-alpha-2"
+val ktor_version = "1.3.2-1.4.0-rc"
+val kotlin_serialization = "1.0-M1-1.4.0-rc"
+val klockVersion = "2.0.0-alpha-1.4.0-rc"
 
 android {
     compileSdkVersion(29)
