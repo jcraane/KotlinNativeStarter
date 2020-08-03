@@ -9,7 +9,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.2.0-alpha03")
+        classpath("com.android.tools.build:gradle:4.2.0-alpha07")
         classpath(kotlin("gradle-plugin", version = "1.4-M2"))
     }
 }
