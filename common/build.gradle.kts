@@ -6,23 +6,24 @@ import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4.0-rc")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4.0")
     }
 }
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("kotlinx-serialization") version "1.4.0-rc"
+    id("kotlinx-serialization") version "1.4.0"
 }
 
 repositories {
     mavenCentral()
 }
 
-val ktor_version = "1.3.2-1.4.0-rc"
-val kotlin_serialization = "1.0-M1-1.4.0-rc"
-val klockVersion = "2.0.0-alpha-1.4.0-rc"
+val ktor_version = "1.4.0"
+val kotlin_serialization = "1.0.0-RC"
+val klockVersion = "1.12.0"
+val coroutinesVersion = "1.3.9"
 
 android {
     compileSdkVersion(29)
@@ -108,7 +109,7 @@ kotlin {
         implementation("io.ktor:ktor-client-logging:$ktor_version")
         implementation("io.ktor:ktor-client-json:$ktor_version")
 //        implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialization")
-        implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialization")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlin_serialization")
         implementation("com.soywiz.korlibs.klock:klock:$klockVersion")
     }
     sourceSets["commonTest"].dependencies {
@@ -124,7 +125,6 @@ kotlin {
     }
     sourceSets["jvmMain"].dependencies {
         implementation(kotlin("stdlib"))
-        api("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialization")
         implementation("io.ktor:ktor-client-core-jvm:$ktor_version")
         implementation("io.ktor:ktor-client-cio:$ktor_version")
         api("com.soywiz.korlibs.klock:klock-jvm:$klockVersion")
