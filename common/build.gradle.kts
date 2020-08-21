@@ -108,6 +108,7 @@ kotlin {
         implementation("io.ktor:ktor-client-core:$ktor_version")
         implementation("io.ktor:ktor-client-logging:$ktor_version")
         implementation("io.ktor:ktor-client-json:$ktor_version")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
 //        implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialization")
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlin_serialization")
         implementation("com.soywiz.korlibs.klock:klock:$klockVersion")
