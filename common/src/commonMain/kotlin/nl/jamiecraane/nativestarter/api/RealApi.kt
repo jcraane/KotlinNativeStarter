@@ -20,6 +20,8 @@ import nl.jamiecraane.nativestarter.log.ktor.logging.LogLevel
 import nl.jamiecraane.nativestarter.log.ktor.logging.Logger
 import nl.jamiecraane.nativestarter.log.ktor.logging.Logging
 import nl.jamiecraane.nativestarter.log.ktor.logging.SIMPLE
+import sample.Sample
+import sample.isIos
 
 //Mockoon does not have good response times at the moment, see: https://github.com/mockoon/mockoon/issues/48
 class RealApi : Api {
@@ -29,14 +31,15 @@ class RealApi : Api {
             level = LogLevel.ALL
         }
     }
+
+    private fun getBaseUrl() = if (isIos()) "http://localhost:2500" else "http://10.0.2.2:2500"
+
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
         println("Persons from common2")
         return withinTryCatch<List<Person>> {
             val start = DateTime.nowUnixLong()
             val response = client.get<HttpResponse> {
-//                url(Url("https://www.test.nl/persons"))
-//                url(Url("http://10.0.2.2:2500/persons"))
-                url(Url("http://localhost:2500/persons"))
+                url(Url("${getBaseUrl()}/persons"))
             }
             val end = DateTime.nowUnixLong()
             println("End persons service call = ${end - start}")
@@ -59,7 +62,7 @@ class RealApi : Api {
         println("RETRIEVE TASKS")
         return withinTryCatch<List<Task>> {
             val response = client.get<HttpResponse> {
-                url(Url("http://10.0.2.2:2500/tasks"))
+                url(Url("${getBaseUrl()}/tasks"))
             }
             if (response.status.isSuccess()) {
                 Success(
