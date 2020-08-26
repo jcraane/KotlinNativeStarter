@@ -20,11 +20,12 @@ repositories {
     mavenCentral()
 }
 
-val ktor_version = "1.4.0"
+//val ktor_version = "1.4.0" // todo: There is an issue with using ktor 1.4.0 (see: https://github.com/Kotlin/kotlinx.coroutines/issues/2215#issuecomment-680777729)
+val ktor_version = "1.3.2-1.4.0-rc"
 val kotlin_serialization = "1.0.0-RC"
 val klockVersion = "1.12.0"
-//val coroutinesVersion = "1.3.9"
-val coroutinesVersion = "1.3.9-native-mt"
+val coroutinesVersion = "1.3.9"
+//val coroutinesVersion = "1.3.9-native-mt"
 //val coroutinesVersion = "1.3.8-native-mt-1.4.0-rc"
 
 android {
