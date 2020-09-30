@@ -8,6 +8,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let cellIdentifier = "CellIdentifier"
     @IBOutlet weak var myLabel: UILabel!
     
+    @IBOutlet weak var personsTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Persons"
@@ -16,8 +18,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let api = IosApiWrapper()
 
         print("Retrieve persons here on iOS side")
+        personsTable.delegate = self
+        personsTable.dataSource = self
+        personsTable.register(UITableViewCell.self, forCellReuseIdentifier: "CellIdentifier")
         api.retrievePersons(
             success: { [weak self] (persons: [Person]) in
+                self?.persons = persons
+                self?.personsTable.reloadData()
                 print("Success, got \(persons)")
             },
             failure: { (failure: Failure) in
@@ -31,6 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Count = \(persons.count)")
         return persons.count
     }
     
