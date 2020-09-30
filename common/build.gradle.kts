@@ -6,27 +6,24 @@ import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4.0")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4.10")
     }
 }
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("kotlinx-serialization") version "1.4.0"
+    id("kotlinx-serialization") version "1.4.10"
 }
 
 repositories {
     mavenCentral()
 }
 
-//val ktor_version = "1.4.0" // todo: There is an issue with using ktor 1.4.0 (see: https://github.com/Kotlin/kotlinx.coroutines/issues/2215#issuecomment-680777729)
-val ktor_version = "1.3.2-1.4.0-rc"
-val kotlin_serialization = "1.0.0-RC"
-val klockVersion = "1.12.0"
-val coroutinesVersion = "1.3.9"
-//val coroutinesVersion = "1.3.9-native-mt"
-//val coroutinesVersion = "1.3.8-native-mt-1.4.0-rc"
+val ktor_version = "1.4.1"
+val kotlin_serialization = "1.0.0-RC2"
+val klockVersion = "1.12.1"
+val coroutinesVersion = "1.3.9-native-mt-2"
 
 android {
     compileSdkVersion(29)
@@ -113,7 +110,7 @@ kotlin {
         implementation("io.ktor:ktor-client-json:$ktor_version")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
 //        implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialization")
-        implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlin_serialization")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialization")
         implementation("com.soywiz.korlibs.klock:klock:$klockVersion")
     }
     sourceSets["commonTest"].dependencies {
@@ -150,7 +147,11 @@ kotlin {
     sourceSets["iosX64Main"].dependencies {
         implementation("com.soywiz.korlibs.klock:klock-iosx64:$klockVersion")
         implementation("io.ktor:ktor-client-ios-iosx64:$ktor_version")
-//        api("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$kotlin_serialization")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion") {
+            version {
+                strictly("1.3.9-native-mt-2")
+            }
+        }
     }
 }
 

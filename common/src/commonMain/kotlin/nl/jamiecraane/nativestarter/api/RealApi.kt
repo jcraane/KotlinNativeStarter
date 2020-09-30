@@ -10,6 +10,8 @@ import io.ktor.client.statement.readText
 import io.ktor.http.Url
 import io.ktor.http.isSuccess
 import io.ktor.utils.io.charsets.Charset
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.list
 import kotlinx.serialization.parse
@@ -34,28 +36,32 @@ class RealApi : Api {
 
     private fun getBaseUrl() = if (isIos()) "http://localhost:2500" else "http://10.0.2.2:2500"
 
+    private val mutex = Mutex()
+
     override suspend fun retrievePersons(): ApiResponse<List<Person>> {
         println("Persons from common2")
-        return withinTryCatch<List<Person>> {
-            val start = DateTime.nowUnixLong()
-            val response = client.get<HttpResponse> {
-                url(Url("${getBaseUrl()}/persons"))
-            }
-            val end = DateTime.nowUnixLong()
-            println("End persons service call = ${end - start}")
+//        return mutex.withLock {
+            return withinTryCatch<List<Person>> {
+                val start = DateTime.nowUnixLong()
+                val response = client.get<HttpResponse> {
+                    url(Url("${getBaseUrl()}/persons"))
+                }
+                val end = DateTime.nowUnixLong()
+                println("End persons service call = ${end - start}")
 
-            if (response.status.isSuccess()) {
-                Success(
-                    jsonParser.decodeFromString(
-                        ListSerializer(Person.serializer()),
-                        response.readText(Charset.forName("UTF-8"))
+                if (response.status.isSuccess()) {
+                    Success(
+                        jsonParser.decodeFromString(
+                            ListSerializer(Person.serializer()),
+                            response.readText(Charset.forName("UTF-8"))
+                        )
                     )
-                )
-            } else {
-                println("is Failure")
-                Failure(response.status.value, "Error")
+                } else {
+                    println("is Failure")
+                    Failure(response.status.value, "Error")
+                }
             }
-        }
+//        }
     }
 
     override suspend fun retrieveTasks(): ApiResponse<List<Task>> {
