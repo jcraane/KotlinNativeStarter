@@ -1,16 +1,17 @@
 package nl.jamiecraane.nativestarter.api
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
-
-internal expect val ApplicationDispatcher: CoroutineDispatcher
+import kotlin.coroutines.CoroutineContext
 
 class IosApiWrapper {
+
+    private val scope = MainScope(Dispatchers.Main)
+
     fun retrievePersons(success: (List<Person>) -> Unit, failure: (Failure<List<Person>>) -> Unit) {
-        GlobalScope.launch(ApplicationDispatcher) {
+        scope.launch {
+            println("Launched with MainScope")
             val response = RealApi().retrievePersons()
             if (response is Success) {
                 success(response.data)
@@ -21,8 +22,7 @@ class IosApiWrapper {
     }
 
     fun retrieveTasks(success: (List<Task>) -> Unit, failure: (Failure<List<Task>>) -> Unit) {
-        println("Test")
-        GlobalScope.launch(ApplicationDispatcher) {
+        scope.launch {
             val response = RealApi().retrieveTasks()
             if (response is Success) {
                 success(response.data)
@@ -31,4 +31,15 @@ class IosApiWrapper {
             }
         }
     }
+}
+
+class MainScope(private val mainContext: CoroutineContext) : CoroutineScope {
+    override val coroutineContext: CoroutineContext
+        get() = mainContext + job + exceptionHandler
+
+    internal val job = SupervisorJob()
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        nl.jamiecraane.nativestarter.log.error("Error", throwable)
+    }
+    private val scope = Dispatchers.Main + job + exceptionHandler
 }
