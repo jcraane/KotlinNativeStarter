@@ -4,15 +4,18 @@ import kotlinx.coroutines.*
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
 import kotlin.coroutines.CoroutineContext
+import kotlin.random.Random
 
 class IosApiWrapper {
 
     private val scope = MainScope(Dispatchers.Main)
+    val realApi = RealApi()
 
     fun retrievePersons(success: (List<Person>) -> Unit, failure: (Failure<List<Person>>) -> Unit) {
         scope.launch {
             println("Launched with MainScope")
-            val response = RealApi().retrievePersons()
+            val response = realApi.retrievePersons()
+//            realApi.id = Random.nextLong()
             if (response is Success) {
                 success(response.data)
             } else if (response is Failure) {
@@ -23,7 +26,7 @@ class IosApiWrapper {
 
     fun retrieveTasks(success: (List<Task>) -> Unit, failure: (Failure<List<Task>>) -> Unit) {
         scope.launch {
-            val response = RealApi().retrieveTasks()
+            val response = realApi.retrieveTasks()
             if (response is Success) {
                 success(response.data)
             } else if (response is Failure) {
@@ -39,7 +42,7 @@ class MainScope(private val mainContext: CoroutineContext) : CoroutineScope {
 
     internal val job = SupervisorJob()
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        nl.jamiecraane.nativestarter.log.error("Error", throwable)
+        println("Error occurred: ${throwable.message}")
     }
     private val scope = Dispatchers.Main + job + exceptionHandler
 }

@@ -1,0 +1,34 @@
+// steps to replicate immutability exceptions
+
+// Prerequisites
+// handle method in ViewController.swift commented out
+// ensureNeverFronze commented out
+// Not value assigned to realApi.id in iOS ApiWrapper
+// realApi not assigned to Person in realApi.retrievePersons
+
+1. Run code as-as with handle() method in ViewController.swift disabled. Everything runs as expected
+
+2. Uncomment handle() method in ViewController.swift and make sure the code map function to other persons does not use
+the freeze method. The following exception should be visible:
+
+Uncaught Kotlin exception: kotlin.native.IncorrectDereferenceException: illegal attempt to access non-shared nl.jamiecraane.nativestarter.domain.Person@e4f968 from other thread
+
+(make sure the ensureNeverFrozen methods are commented out)
+3. Change the code in ViewController.swift in the otherPersons .map code so the person object is freezed. Run the code again, no
+exception occurs. Person can be accessed in the background thread. Since persons does not reference any other objects this is fine and
+nothing else is frozen.
+
+This could lead to a source of bugs. If the Person object does have a reference to for example the API, a next api request cannot be made.
+
+4. Make sure ensureNeverFrozen is commented-out in Person and RealApi. Uncomment the line in RealApi.retrievePersons where the realApi is assigned
+to the transient realApi field in Persons. Also uncomment the line in IosApiWrapper which assigns a random number to
+ the if field in RealApi. Run the app again. You should see the error Error occurred: mutation attempt of frozen nl.jamiecraane.nativestarter.api.RealApi@76c098
+
+ This demonstrates that if an object gets frozen, all objects it references also gets frozen.
+
+ 5. To guard against such objects being frozen un-comment the ensureNeverFrozen call in RealApi and run the app again.
+
+ 6. Comment the asignment of real api to Person and run the app again. You now should see the persons can be used in the background on
+ the iOS side.
+
+If you do not want any object be freezed, add the ensureNeverFrozen to every object.

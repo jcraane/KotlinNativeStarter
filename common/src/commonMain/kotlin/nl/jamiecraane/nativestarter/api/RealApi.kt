@@ -31,8 +31,11 @@ class RealApi : Api {
         }
     }
 
+//    variable property for demonstration purposes
+    var id: Long = 0
+
     init {
-        ensureNeverFrozen()
+//        ensureNeverFrozen()
     }
 
     private fun getBaseUrl() = if (isIos()) "http://localhost:2500" else "http://10.0.2.2:2500"
@@ -59,6 +62,7 @@ class RealApi : Api {
                         ListSerializer(Person.serializer()),
                         response.readText(Charset.forName("UTF-8"))
                     )
+//                    persons[0].realApi = this
 //                    test mutation
                     persons[1].age = 200
                     Success(
