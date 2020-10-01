@@ -10,22 +10,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var personsTable: UITableView!
     
+    @IBOutlet weak var retrievePersonsButton: UIButton!
+
+    private let api = IosApiWrapper()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Persons"
-    
+        title = "Persons"    
         myLabel.text = NSLocalizedString("button.ok", comment: "")
-        let api = IosApiWrapper()
-
-        print("Retrieve persons here on iOS side")
         personsTable.delegate = self
         personsTable.dataSource = self
         personsTable.register(UITableViewCell.self, forCellReuseIdentifier: "CellIdentifier")
+        retrievePersonsButton.addTarget(self, action: #selector(didButtonClick), for: .touchUpInside)
+    }
+    
+    @objc func didButtonClick(_ sender: UIButton) {
+        retrievePersons()
+    }
+    
+    func retrievePersons() {
+        persons = []
+        personsTable.reloadData()
+                
         api.retrievePersons(
             success: { [weak self] (persons: [Person]) in
+                print("Person 1 age = \(persons[0].age)")
+//                test mutation
+                persons[0].age = 100
+                print("Person 1 (after write) age = \(persons[0].age)")
+                print("Person 2 (after write) age = \(persons[1].age)")
                 self?.persons = persons
                 self?.personsTable.reloadData()
                 print("Success, got \(persons)")
+                
+//                self?.handle(persons: persons)
             },
             failure: { (failure: Failure) in
                 print("Failure in calling retrievePersons: \(failure.status)")
@@ -38,7 +56,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Count = \(persons.count)")
         return persons.count
     }
     
@@ -62,9 +79,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //Issue demonstrating https://github.com/JetBrains/kotlin-native/issues/2470 and https://github.com/JetBrains/kotlin-native/issues/2443
         
         let otherPersons = persons.map { (p) -> Person in
+//            return NativeStateHelperKt.freeze(p) as! Person
             return p
         }
-        
+                
         let otherArray: [Person] = Array(otherPersons)
         
         DispatchQueue.global(qos: .background).async {
@@ -80,6 +98,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 persons.forEach { person in
                     print("Person = \(person.firstName)")
                 }
+                
+//                attempt of mutating state of frozen object
+//                persons[0].age = 1000
             }
         }
     }
