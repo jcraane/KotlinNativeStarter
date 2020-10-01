@@ -8,4 +8,5 @@ actual val Any.isFrozen: Boolean
 
 actual fun <T> T.freeze(): T {
     // Ignored
+    return this
 }
