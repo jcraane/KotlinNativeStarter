@@ -4,7 +4,6 @@ import com.soywiz.klock.DateTime
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.url
-import io.ktor.client.response.readText
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.readText
 import io.ktor.http.Url
@@ -13,16 +12,14 @@ import io.ktor.utils.io.charsets.Charset
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.builtins.list
-import kotlinx.serialization.parse
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
-import nl.jamiecraane.nativestarter.log.info
 import nl.jamiecraane.nativestarter.log.ktor.logging.LogLevel
 import nl.jamiecraane.nativestarter.log.ktor.logging.Logger
 import nl.jamiecraane.nativestarter.log.ktor.logging.Logging
 import nl.jamiecraane.nativestarter.log.ktor.logging.SIMPLE
-import sample.Sample
+import nl.jamiecraane.nativestarter.state.ensureNeverFrozen
+import nl.jamiecraane.nativestarter.state.isFrozen
 import sample.isIos
 
 //Mockoon does not have good response times at the moment, see: https://github.com/mockoon/mockoon/issues/48
@@ -32,6 +29,10 @@ class RealApi : Api {
             logger = Logger.SIMPLE
             level = LogLevel.ALL
         }
+    }
+
+    init {
+        ensureNeverFrozen()
     }
 
     private fun getBaseUrl() = if (isIos()) "http://localhost:2500" else "http://10.0.2.2:2500"
@@ -44,17 +45,24 @@ class RealApi : Api {
             return withinTryCatch<List<Person>> {
                 val start = DateTime.nowUnixLong()
                 val response = client.get<HttpResponse> {
-                    url(Url("${getBaseUrl()}/persons"))
+                    mutex.withLock {
+                        url(Url("${getBaseUrl()}/persons"))
+                    }
                 }
                 val end = DateTime.nowUnixLong()
                 println("End persons service call = ${end - start}")
 
+                println("Reponse.isFrozen ${response.isFrozen}")
+                println("api.isFrozen ${this.isFrozen}")
                 if (response.status.isSuccess()) {
+                    val persons = jsonParser.decodeFromString(
+                        ListSerializer(Person.serializer()),
+                        response.readText(Charset.forName("UTF-8"))
+                    )
+//                    test mutation
+                    persons[1].age = 200
                     Success(
-                        jsonParser.decodeFromString(
-                            ListSerializer(Person.serializer()),
-                            response.readText(Charset.forName("UTF-8"))
-                        )
+                        persons
                     )
                 } else {
                     println("is Failure")
