@@ -9,11 +9,11 @@ import nl.jamiecraane.nativestarter.state.ensureNeverFrozen
 data class Person(val firstName: String, val lastName: String) {
 //    This reference to RealApi is just for demonstration purposes
     @Transient
-    var realApi: RealApi? = null
+//    var realApi: RealApi? = null
 
-    init {
+    /*init {
         ensureNeverFrozen()
-    }
+    }*/
 
     var age: Int = 0
     val fullname: String

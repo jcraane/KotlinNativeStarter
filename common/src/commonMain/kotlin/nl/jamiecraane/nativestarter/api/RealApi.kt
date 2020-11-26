@@ -62,12 +62,10 @@ class RealApi : Api {
                         ListSerializer(Person.serializer()),
                         response.readText(Charset.forName("UTF-8"))
                     )
-                    persons[0].realApi = this
+//                    persons[0].realApi = this
 //                    test mutation
-                    persons[1].age = 200
-                    Success(
-                        persons
-                    )
+//                    persons[1].age = 200
+                    Success(persons)
                 } else {
                     println("is Failure")
                     Failure(response.status.value, "Error")
