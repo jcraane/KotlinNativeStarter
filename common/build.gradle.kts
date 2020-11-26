@@ -6,14 +6,14 @@ import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4.10")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4.20")
     }
 }
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("kotlinx-serialization") version "1.4.10"
+    id("kotlinx-serialization") version "1.4.20"
 }
 
 repositories {
@@ -21,9 +21,9 @@ repositories {
 }
 
 val ktor_version = "1.4.1"
-val kotlin_serialization = "1.0.0-RC2"
+val kotlin_serialization = "1.0.1"
 val klockVersion = "1.12.1"
-val coroutinesVersion = "1.3.9-native-mt-2"
+val coroutinesVersion = "1.4.1-native-mt"
 
 android {
     compileSdkVersion(29)
@@ -149,7 +149,7 @@ kotlin {
         implementation("io.ktor:ktor-client-ios-iosx64:$ktor_version")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion") {
             version {
-                strictly("1.3.9-native-mt-2")
+                strictly("1.4.1-native-mt")
             }
         }
     }

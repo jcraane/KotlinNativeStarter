@@ -43,7 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self?.personsTable.reloadData()
                 print("Success, got \(persons)")
                 
-//                self?.handle(persons: persons)
+                self?.handle(persons: persons)
             },
             failure: { (failure: Failure) in
                 print("Failure in calling retrievePersons: \(failure.status)")
@@ -79,8 +79,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //Issue demonstrating https://github.com/JetBrains/kotlin-native/issues/2470 and https://github.com/JetBrains/kotlin-native/issues/2443
         
         let otherPersons = persons.map { (p) -> Person in
-//            return NativeStateHelperKt.freeze(p) as! Person
-            return p
+            return NativeStateHelperKt.freeze(p) as! Person
+//            return p
         }
                 
         let otherArray: [Person] = Array(otherPersons)

@@ -10,7 +10,6 @@ import io.ktor.client.statement.readText
 import io.ktor.http.Url
 import io.ktor.http.isSuccess
 import io.ktor.utils.io.charsets.Charset
-import kotlinx.serialization.builtins.list
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
 import nl.jamiecraane.nativestarter.log.info

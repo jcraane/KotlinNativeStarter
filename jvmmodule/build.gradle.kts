@@ -1,5 +1,4 @@
 plugins {
-    id("java")
     application
     kotlin("jvm")
     kotlin("kapt")

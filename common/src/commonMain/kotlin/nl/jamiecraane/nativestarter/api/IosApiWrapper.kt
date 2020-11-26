@@ -15,7 +15,7 @@ class IosApiWrapper {
         scope.launch {
             println("Launched with MainScope")
             val response = realApi.retrievePersons()
-//            realApi.id = Random.nextLong()
+            realApi.id = Random.nextLong()
             if (response is Success) {
                 success(response.data)
             } else if (response is Failure) {

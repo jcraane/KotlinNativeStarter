@@ -12,7 +12,7 @@ data class Person(val firstName: String, val lastName: String) {
     var realApi: RealApi? = null
 
     init {
-//        ensureNeverFrozen()
+        ensureNeverFrozen()
     }
 
     var age: Int = 0
