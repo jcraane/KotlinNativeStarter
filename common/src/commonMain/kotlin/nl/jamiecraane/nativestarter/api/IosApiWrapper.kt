@@ -1,6 +1,8 @@
 package nl.jamiecraane.nativestarter.api
 
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.take
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
 import kotlin.coroutines.CoroutineContext
@@ -32,6 +34,18 @@ class IosApiWrapper {
             } else if (response is Failure) {
                 failure(response)
             }
+        }
+    }
+
+    fun testFlow(success: (String) -> Unit) {
+        scope.launch {
+            realApi.testFLow()
+                .take(1)
+                .collect {
+                    success(it)
+
+                    realApi.setValue("Value from wrapper")
+                }
         }
     }
 }

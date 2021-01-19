@@ -9,6 +9,10 @@ import io.ktor.client.statement.readText
 import io.ktor.http.Url
 import io.ktor.http.isSuccess
 import io.ktor.utils.io.charsets.Charset
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.builtins.ListSerializer
@@ -91,6 +95,18 @@ class RealApi : Api {
                 Failure(response.status.value, "Error")
             }
         }
+    }
+
+    private val f = MutableStateFlow("Hello")
+
+    override fun setValue(value: String) {
+        f.value = value
+    }
+
+    override suspend fun testFLow(): Flow<String> {
+        val value = f.take(1)
+        println("Took value from flow")
+        return value
     }
 }
 

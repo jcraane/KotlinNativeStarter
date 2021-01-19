@@ -25,7 +25,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @objc func didButtonClick(_ sender: UIButton) {
-        retrievePersons()
+//        retrievePersons()
+        
+        testFlow()
+    }
+    
+    func testFlow() {
+        api.testFlow(success: {(result: String) in
+            print("Value from flow is \(result)")
+        })
     }
     
     func retrievePersons() {
