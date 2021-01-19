@@ -10,6 +10,7 @@ import io.ktor.client.statement.readText
 import io.ktor.http.Url
 import io.ktor.http.isSuccess
 import io.ktor.utils.io.charsets.Charset
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
@@ -41,4 +42,11 @@ class MockApi : Api {
     override fun setValue(value: String) {
         TODO("Not yet implemented")
     }
+
+    override suspend fun sendToChannelAndClose() {
+        TODO("Not yet implemented")
+    }
+
+    override val channel: Channel<String>
+        get() = TODO("Not yet implemented")
 }

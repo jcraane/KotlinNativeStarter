@@ -26,12 +26,17 @@ class MainViewModel : ViewModel() {
     val message = MutableLiveData<String>()
     val errorText = MutableLiveData("")
     val currentTime = MutableLiveData<String>()
+    val fromChannel = MutableLiveData<String>()
 
     init {
 //        todo test retrieve async
         viewModelScope.launch {
             retrievePersons()
             retrieveTasks()
+            println("before receive")
+            val receive = api.channel.receive()
+            println("received = $receive")
+            fromChannel.value = receive
         }
 
         val now = DateTime.now()
@@ -60,6 +65,15 @@ class MainViewModel : ViewModel() {
         if (tasksResponse is Success) {
             tasks.value = tasksResponse.data
         }
+    }
+
+    fun readFromChannel() {
+        println("LAUNCH")
+        viewModelScope.launch {
+            println("Before send")
+            api.sendToChannelAndClose()
+        }
+
     }
 
     fun parallel() {

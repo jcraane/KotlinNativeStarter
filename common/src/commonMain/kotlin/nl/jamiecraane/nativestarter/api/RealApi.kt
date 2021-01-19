@@ -9,6 +9,7 @@ import io.ktor.client.statement.readText
 import io.ktor.http.Url
 import io.ktor.http.isSuccess
 import io.ktor.utils.io.charsets.Charset
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -39,7 +40,7 @@ class RealApi : Api {
     var id: Long = 0
 
     init {
-        ensureNeverFrozen()
+//        ensureNeverFrozen()
     }
 
     private fun getBaseUrl() = if (isIos()) "http://localhost:2500" else "http://10.0.2.2:2500"
@@ -97,17 +98,25 @@ class RealApi : Api {
         }
     }
 
-    private val f = MutableStateFlow("Hello")
+    var f = MutableStateFlow("Hello")
 
     override fun setValue(value: String) {
         f.value = value
     }
 
     override suspend fun testFLow(): Flow<String> {
-        val value = f.take(1)
         println("Took value from flow")
-        return value
+        return f
     }
+
+    override suspend fun sendToChannelAndClose() {
+        channel.send("First element to channel")
+        channel.close()
+        channel.offer("1")
+        println("CHANNEL = $channel")
+    }
+
+    override val channel: Channel<String> = Channel()
 }
 
 suspend fun <T> withinTryCatch(block: suspend () -> ApiResponse<T>): ApiResponse<T> {

@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import nl.jamiecraane.multiplatform.myapp.R
 import nl.jamiecraane.multiplatform.myapp.databinding.ActivityMainBinding
 import nl.jamiecraane.multiplatform.myapp.main.viewmodel.MainViewModel
+import nl.jamiecraane.nativestarter.api.RealApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -46,5 +47,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         echoOutput.text = Echo.sayHelloEcho()
+        channel.setOnClickListener {
+            viewModel.readFromChannel()
+        }
+        viewModel.fromChannel.observe(this, Observer {
+            channelText.text = it
+        })
     }
 }

@@ -68,5 +68,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/parallel"
                 android:text="Parallel"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/channel"
+                android:text="Channel test"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/channelText" />
     </LinearLayout>
 </layout>
