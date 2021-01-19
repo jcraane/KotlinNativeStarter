@@ -20,10 +20,10 @@ repositories {
     mavenCentral()
 }
 
-val ktor_version = "1.4.1"
+val ktor_version = "1.4.3"
 val kotlin_serialization = "1.0.1"
 val klockVersion = "1.12.1"
-val coroutinesVersion = "1.4.1-native-mt"
+val coroutinesVersion = "1.4.2-native-mt"
 
 android {
     compileSdkVersion(29)
@@ -149,7 +149,7 @@ kotlin {
         implementation("io.ktor:ktor-client-ios-iosx64:$ktor_version")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion") {
             version {
-                strictly("1.4.1-native-mt")
+                strictly("1.4.2-native-mt")
             }
         }
     }

@@ -4,12 +4,13 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven {
-            url = uri("https://dl.bintray.com/kotlin/kotlin-eap")
-        }
+        maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
+        maven { url = uri("http://kotlin.bintray.com/kotlin-eap") }
+        maven { url = uri("http://kotlin.bintray.com/kotlin-dev") }
+        maven { url = uri("https://kotlin.bintray.com/kotlinx") }
+        maven { url = uri("https://dl.bintray.com/jetbrains/kotlin-native-dependencies") }
     }
     dependencies {
-//        classpath("com.android.tools.build:gradle:4.2.0-alpha16")
         classpath("com.android.tools.build:gradle:4.1.1")
         classpath(kotlin("gradle-plugin", version = "1.4.20"))
     }
