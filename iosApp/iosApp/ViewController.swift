@@ -27,22 +27,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @objc func didButtonClick(_ sender: UIButton) {
 //        retrievePersons()
         
-//        testFlow()
-        testChannel()
-    }
-    
-    func testChannel() {
-        api.sendToChannel()
-        api.getFromChannel(success: {(result: String) in
-            print("From channel = \(result)")
-            NativeStateHelperKt.freeze(self.api)
-        })
+        testFlow()
     }
     
     func testFlow() {
         api.testFlow(success: {(result: String) in
             print("Value from flow is \(result)")
-            NativeStateHelperKt.freeze(self.api)
         })
     }
     

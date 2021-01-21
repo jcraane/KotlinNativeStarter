@@ -1,9 +1,7 @@
 package nl.jamiecraane.nativestarter.api
 
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.take
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
@@ -41,29 +39,14 @@ class IosApiWrapper {
 
     fun testFlow(success: (String) -> Unit) {
         scope.launch {
-            success(realApi.testFLow().first())
-            /*    .collect {
+            realApi.testFLow()
+                .take(1)
+                .collect {
                     success(it)
+
                     realApi.setValue("Value from wrapper")
-                }*/
+                }
         }
-    }
-
-    fun sendToChannel() {
-        scope.launch {
-            realApi.sendToChannelAndClose()
-        }
-    }
-
-    fun getFromChannel(success: (String) -> Unit) {
-        scope.launch {
-            val value = realApi.channel.receive()
-            success(value)
-        }
-    }
-
-    suspend fun getFLow(): Flow<String> {
-        return realApi.testFLow()
     }
 }
 

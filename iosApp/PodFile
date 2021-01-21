@@ -2,5 +2,6 @@ platform :ios, '11.0'
 use_frameworks!
     ## Logging
     pod 'SwiftyBeaver'
+    pod 'RxCocoa'
 target 'iosApp' do
 end

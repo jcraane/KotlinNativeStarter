@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8E6CAB8734B281E517C720AF /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD0CA34664ABE6318B9A6DA /* Pods_iosApp.framework */; };
 		EB5E82C223E3186100B02904 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB5E82C423E3186100B02904 /* Localizable.strings */; };
+		EBBC06822A20AC16406E3286 /* RxFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC0A3FA2D798C9544FC933 /* RxFlow.swift */; };
 		F861D7E1207FA40F0085E80D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F861D7E0207FA40F0085E80D /* AppDelegate.swift */; };
 		F861D7E3207FA40F0085E80D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F861D7E2207FA40F0085E80D /* ViewController.swift */; };
 		F861D7E6207FA40F0085E80D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F861D7E4207FA40F0085E80D /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		EB5E82C523E3187900B02904 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		EB5E82C623E3187900B02904 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		EB5E82C723E3187900B02904 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EBBC0A3FA2D798C9544FC933 /* RxFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxFlow.swift; sourceTree = "<group>"; };
 		F861D7DD207FA40F0085E80D /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F861D7E0207FA40F0085E80D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F861D7E2207FA40F0085E80D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				F861D7E9207FA4100085E80D /* LaunchScreen.storyboard */,
 				F861D7EC207FA4100085E80D /* Info.plist */,
 				EB5E82C423E3186100B02904 /* Localizable.strings */,
+				EBBC0A3FA2D798C9544FC933 /* RxFlow.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 			files = (
 				F861D7E3207FA40F0085E80D /* ViewController.swift in Sources */,
 				F861D7E1207FA40F0085E80D /* AppDelegate.swift in Sources */,
+				EBBC06822A20AC16406E3286 /* RxFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
