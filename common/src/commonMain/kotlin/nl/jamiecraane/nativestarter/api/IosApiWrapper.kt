@@ -1,8 +1,8 @@
 package nl.jamiecraane.nativestarter.api
 
+import io.ktor.utils.io.core.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.*
 import nl.jamiecraane.nativestarter.domain.Person
 import nl.jamiecraane.nativestarter.domain.Task
 import kotlin.coroutines.CoroutineContext
@@ -46,6 +46,38 @@ class IosApiWrapper {
 
                     realApi.setValue("Value from wrapper")
                 }
+        }
+    }
+
+    fun complexFlow(): CFlow<String> {
+        val responseFlow: Flow<String> = flow {
+            scope.launch {
+                realApi.testFLow().take(1).transformLatest {
+                    emit(it)
+                }
+            }
+        }
+        return responseFlow.wrap()
+    }
+
+}
+
+fun <T> Flow<T>.wrap(): CFlow<T> =
+    CFlow(this)
+
+class CFlow<T>( val origin: Flow<T>) : Flow<T> by origin {
+    private val scope = MainScope()
+    fun watch(block: (T) -> Unit): Closeable {
+        val job = Job(/*ConferenceService.coroutineContext[Job]*/)
+
+        onEach {
+            block(it)
+        }.launchIn(scope)
+
+        return object : Closeable {
+            override fun close() {
+                job.cancel()
+            }
         }
     }
 }
