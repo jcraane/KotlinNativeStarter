@@ -59,7 +59,6 @@ class IosApiWrapper {
         }
         return responseFlow.wrap()
     }
-
 }
 
 fun <T> Flow<T>.wrap(): CFlow<T> =
