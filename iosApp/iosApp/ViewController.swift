@@ -1,5 +1,10 @@
 import UIKit
+
 import common
+
+import RxSwift
+import RxCocoa
+
 import SwiftyBeaver
 let log = SwiftyBeaver.self
 
@@ -13,7 +18,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var retrievePersonsButton: UIButton!
 
     private let api = IosApiWrapper()
-    
+
+    private let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Persons"    
@@ -27,7 +34,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @objc func didButtonClick(_ sender: UIButton) {
 //        retrievePersons()
         
-        testFlow()
+        //testFlow()
+
+        asObservable(api.complexFlow())
+            .subscribe(onNext: { result in
+                print("Value from subscribed flow is \(result)")
+
+            })
+            .disposed(by: disposeBag)
+
     }
     
     func testFlow() {
