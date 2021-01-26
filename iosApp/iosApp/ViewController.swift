@@ -29,19 +29,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         personsTable.dataSource = self
         personsTable.register(UITableViewCell.self, forCellReuseIdentifier: "CellIdentifier")
         retrievePersonsButton.addTarget(self, action: #selector(didButtonClick), for: .touchUpInside)
+
+        Driver
+            .just("Test")
+            .flatMapLatest { _ in
+                return asObservable(self.api.complexFlow())
+                        .asDriver(onErrorJustReturn: "test")
+            }
+            .debug("driver")
+            .drive(onNext: { next in
+                print("next value is \(next)")
+            })
+            .disposed(by: disposeBag)
+
+        print("Hallo Elin!")
+
     }
     
     @objc func didButtonClick(_ sender: UIButton) {
 //        retrievePersons()
         
         //testFlow()
-
-        asObservable(api.complexFlow())
-            .subscribe(onNext: { result in
-                print("Value from subscribed flow is \(result)")
-
-            })
-            .disposed(by: disposeBag)
 
     }
     

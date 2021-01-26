@@ -14,6 +14,7 @@ class IosApiWrapper {
     val realApi = RealApi()
 
     fun retrievePersons(success: (List<Person>) -> Unit, failure: (Failure<List<Person>>) -> Unit) {
+
         scope.launch {
             println("Launched with MainScope")
             val response = realApi.retrievePersons()
@@ -52,9 +53,10 @@ class IosApiWrapper {
     fun complexFlow(): CFlow<String> {
         val responseFlow: Flow<String> = flow {
             scope.launch {
-                realApi.testFLow().take(1).transformLatest {
+                delay(5000)
+                realApi.testFLow().onEach { println("each $it") }.transformLatest {
                     emit(it)
-                }
+                }.collect()
             }
         }
         return responseFlow.wrap()
@@ -70,6 +72,7 @@ class CFlow<T>( val origin: Flow<T>) : Flow<T> by origin {
         val job = Job(/*ConferenceService.coroutineContext[Job]*/)
 
         onEach {
+            print("watch $it")
             block(it)
         }.launchIn(scope)
 
